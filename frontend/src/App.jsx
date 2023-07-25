@@ -1,6 +1,7 @@
 import Header from "./components/Header"
 import Product from "./components/Product"
 import Footer from "./components/Footer"
+import Newsletter from "./components/Newsletter"
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
       <div>
         <Header />
         <Product />
+        <Newsletter />
         <Footer />
       </div>
     </>

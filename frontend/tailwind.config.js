@@ -9,7 +9,8 @@ export default {
       colors:{
         primaryBrown:'#914a0e',
         lightBrown:'#b39573',
-        primaryGrey:'#f5f5f5'
+        lightGrey:'#f5f5f5',
+        darkGrey:'#4f4f4f'
       }
     },
   },

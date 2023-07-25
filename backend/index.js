@@ -148,8 +148,9 @@ const products = [
 
 
 let enquiries = [
-
 ]
+
+let subscribers = []
 
 
 app.get('/',(req, res)=>{
@@ -163,6 +164,10 @@ app.get('/api/products',(req, res) => {
 
 app.get('/api/enquiries',(req, res) => {
     res.json(enquiries)
+})
+
+app.get('/api/subscribers',(req, res) => {
+    res.json(subscribers)
 })
 
 app.get('/api/products/:id',(req, res) => {
@@ -181,7 +186,13 @@ app.get('/api/products/:id',(req, res) => {
 app.post('/api/contact',(req, res)=>{
     const body = req.body;
     enquiries = enquiries.concat(body)
-    res.json('Added ')
+    res.json('Added Enquiry')
+})
+
+app.post('/api/subscribe',(req, res)=>{
+    const email = req.body.email;
+    subscribers = subscribers.concat(email)
+    res.json('Added Subscriber')
 })
 
 const PORT = 9999;

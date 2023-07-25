@@ -1,14 +1,18 @@
 import React, { useState, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import axios from 'axios'
 
-function EnquiryForm({ isOpen, setIsOpen, productInfo }) {
+function EnquiryForm({ isOpen, setIsOpen, productInfo, setOpenEnquirySuccess}) {
     const [form, setForm] = useState({name:'',email:'',mobile:'',message:''})
   
     const handleSubmit = () => {
       axios
         .post('http://localhost:9999/api/contact', {...form, productName:productInfo.productName})
         .then((res) => {
-          console.log('sent')
+          setOpenEnquirySuccess(true)
+        })
+        .catch((err) => {
+          console.log(err)
         })
     }
   
