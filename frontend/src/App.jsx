@@ -1,7 +1,6 @@
 import Header from "./components/Header"
-import Product from "./components/Product"
 import Footer from "./components/Footer"
-import Newsletter from "./components/Newsletter"
+import { Outlet } from "react-router-dom"
 
 function App() {
 
@@ -9,8 +8,9 @@ function App() {
     <>
       <div>
         <Header />
-        <Product />
-        <Newsletter />
+        <div  className="mt-32">
+        <Outlet />
+        </div>
         <Footer />
       </div>
     </>

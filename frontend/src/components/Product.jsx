@@ -24,7 +24,7 @@ const Product = () => {
       })
   }, [])
   return (
-    <div className='max-w-7xl mx-auto mt-32'>
+    <div className='max-w-7xl mx-auto'>
       <EnquiryForm isOpen={formOpen} setIsOpen={setFormOpen} productInfo={productInfo} setOpenEnquirySuccess={setOpenEnquirySuccess} />
       <EnquiryAdded isOpen={openEnquirySuccess} setIsOpen={setOpenEnquirySuccess} message="Success" />
       <div className='flex justify-center py-12'>Products / {productInfo.mainCategory} {productInfo.subCategory && ` / ${productInfo.subCategory}`} / {productInfo?.productName}</div>
@@ -63,20 +63,20 @@ const Product = () => {
       <div>
         <Heading text="MACHINE SPECIFICATIONS" />
         <div>
-          {/* <table>
+          <table className='border-[1px] w-full'>
             <tbody>
               {
-                Object.keys(productInfo?.specifications)?.map(item => {
+                productInfo?.specifications && Object.keys(productInfo?.specifications)?.map(item => {
                   return (
-                    <tr>
-                      <th>{item}:</th>
-                      <td>{productInfo?.specifications[item]}</td>
+                    <tr className='border-y-[1px]' key={item}>
+                      <th className='w-1/2 text-left border-x-[1px] p-4'>{item}:</th>
+                      <td className='w-1/2 p-4'>{productInfo?.specifications[item]}</td>
                     </tr>
                   )
                 })
               }
             </tbody>
-          </table> */}
+          </table>
         </div>
       </div>
       {/* Features */}

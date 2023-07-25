@@ -15,12 +15,12 @@ const products = [
         brochureLink:'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT-16K-MACHENICAL.pdf',
         videoLink:'https://www.youtube.com/watch?v=Onoyk0dtKAU',
         specifications:{
-            "productionRate": "Upto 150 ppm, Depending upon shape size and moisture content",
-            "electricalSupply": "3 kW (Max)",
-            "power": "220VOLTS",
-            "consumption": "SINGLE PHASE 50/60HZ",
-            "dimension": "3965(L) X 1220(W) X 1829(H) mm",
-            "weight": "1300 kg (approx)"
+            "Production Rate": "Upto 150 ppm, Depending upon shape size and moisture content",
+            "Electrical Supply": "3 kW (Max)",
+            "Power": "220VOLTS",
+            "Consumption": "SINGLE PHASE 50/60HZ",
+            "Dimension": "3965(L) X 1220(W) X 1829(H) mm",
+            "Weight": "1300 kg (approx)"
         },
         features:[
             'Machine Suitable for Detergent Cake & Toilet Soap',
@@ -58,12 +58,12 @@ const products = [
         brochureLink:'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT-16K-3-SERVO-AXIS-1.pdf',
         videoLink:'https://youtu.be/n6wxLujRoIc',
         specifications:{
-            "productionRate": "Upto 200 ppm, Depending upon shape size and moisture content",
-            "electricalSupply": "3 kW (Max)",
-            "power": "220VOLTS",
-            "consumption": "SINGLE PHASE 50/60HZ",
-            "dimension": "3965(L) X 1220(W) X 1829(H) mm",
-            "weight": "1300 kg (approx)"
+            "Production Rate": "Upto 200 ppm, Depending upon shape size and moisture content",
+            "Electrical Supply": "3 kW (Max)",
+            "Power": "220VOLTS",
+            "Consumption": "SINGLE PHASE 50/60HZ",
+            "Dimension": "3965(L) X 1220(W) X 1829(H) mm",
+            "Weight": "1300 kg (approx)"
           },
         features:[
             `7" colored HMI`,
@@ -110,12 +110,12 @@ const products = [
         brochureLink:'https://bmpackingmachines.com/wp-content/uploads/2020/11/bfw-excel-1.pdf',
         videoLink:'https://www.youtube.com/watch?v=FXxXgBYG5-A',
         specifications:{
-            "productionRate": "Upto 360 ppm, Depending upon shape size and moisture content",
-            "electricalSupply": "5.5 kW (Max)",
-            "power": "220VOLTS",
-            "consumption": "SINGLE PHASE 50/60HZ",
-            "dimension": "3965(L) X 0915(W) X 2134(H) mm",
-            "weight": "1500 kg (approx)"
+            "Production Rate": "Upto 360 ppm, Depending upon shape size and moisture content",
+            "Electrical Supply": "5.5 kW (Max)",
+            "Power": "220VOLTS",
+            "Consumption": "SINGLE PHASE 50/60HZ",
+            "Dimension": "3965(L) X 0915(W) X 2134(H) mm",
+            "Weight": "1500 kg (approx)"
         },
         features: [
             "Touch Screen controlled HMI for stop, start, speed, temperature control, timing of various servo motors, recipes of different sizes and print control etc.",

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 
 function MyDropdown() {
@@ -28,18 +29,20 @@ const Header = () => {
         <div className='max-w-7xl mx-auto'>
             <div className='fixed top-0 left-0 flex w-full items-center justify-around h-32 bg-white shadow-md'>
                 <div>
-                    <img src='/logo.jpg' className='w-24 rounded-lg' />
+                    <Link to="/">
+                        <img src='/logo.jpg' className='w-24 rounded-lg' />
+                    </Link>
                 </div>
                 <div>
                     <ul className='flex gap-16 font-semibold'>
-                        <li><a href='/' className='hover:text-primaryBrown'>Home</a></li>
-                        <li><a href='/' className='hover:text-primaryBrown'>About Us</a></li>
+                        <li><Link to='/' className='hover:text-primaryBrown'>Home</Link></li>
+                        <li><Link to='/aboutus' className='hover:text-primaryBrown'>About Us</Link></li>
                         <li>
                             <MyDropdown />
                         </li>
-                        <li><a href='/' className='hover:text-primaryBrown'>Testimonials</a></li>
-                        <li><a href='/' className='hover:text-primaryBrown'>Client List</a></li>
-                        <li><a href='/' className='hover:text-primaryBrown'>Contact Us</a></li>
+                        <li><Link to='/' className='hover:text-primaryBrown'>Testimonials</Link></li>
+                        <li><Link to='/' className='hover:text-primaryBrown'>Client List</Link></li>
+                        <li><Link to='/' className='hover:text-primaryBrown'>Contact Us</Link></li>
                     </ul>
                 </div>
             </div>
