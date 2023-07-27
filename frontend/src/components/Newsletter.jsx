@@ -14,23 +14,8 @@ const Newsletter = () => {
                 setForm({ email: '' })
             })
     }
-    barba.init({
-        transitions: [{
-            name: 'opacity-transition',
-            leave(data) {
-                return anime.to(data.current.container, {
-                    opacity: 0
-                });
-            },
-            enter(data) {
-                return anime.from(data.next.container, {
-                    opacity: 0
-                });
-            }
-        }]
-    });
     return (
-        <div className='max-w-7xl flex flex-col gap-8 items-center mx-auto py-32' data-barba="wrapper">
+        <div className='max-w-7xl flex flex-col gap-8 items-center mx-auto py-32' >
             <EnquiryAdded isOpen={openNewsletterSuccess} setIsOpen={setNewsLetterSuccess} message="Success" />
             <div className='text-center'  data-barba="container">
                 <p className='text-2xl mb-3'>Newsletter Sign Up</p>
