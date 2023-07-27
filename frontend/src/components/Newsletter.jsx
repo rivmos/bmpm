@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import EnquiryAdded from './EnquiryAdded'
-import barba from '@barba/core'
-import gsap from '@barba/core'
-import anime from 'animejs'
 
 const Newsletter = () => {
     const [form, setForm] = useState({ email: '' })
