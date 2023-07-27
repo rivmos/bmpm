@@ -8,13 +8,13 @@ app.use(cors())
 
 const products = [
     {
-        id:0,
-        mainCategory:'Wrapping Machine',
-        subCategory:'Detergent',
-        productName:'MDT 16K – 3 Servo Axis',
-        brochureLink:'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT-16K-MACHENICAL.pdf',
-        videoLink:'https://www.youtube.com/watch?v=Onoyk0dtKAU',
-        specifications:{
+        id: 0,
+        mainCategory: 'Wrapping Machine',
+        subCategory: 'Detergent',
+        productName: 'MDT 16K – 3 Servo Axis',
+        brochureLink: 'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT-16K-MACHENICAL.pdf',
+        videoLink: 'https://www.youtube.com/watch?v=Onoyk0dtKAU',
+        specifications: {
             "Production Rate": "Upto 150 ppm, Depending upon shape size and moisture content",
             "Electrical Supply": "3 kW (Max)",
             "Power": "220VOLTS",
@@ -22,7 +22,7 @@ const products = [
             "Dimension": "3965(L) X 1220(W) X 1829(H) mm",
             "Weight": "1300 kg (approx)"
         },
-        features:[
+        features: [
             'Machine Suitable for Detergent Cake & Toilet Soap',
             'SIX station adjustable / turret',
             'Eight Station extended collator',
@@ -51,21 +51,21 @@ const products = [
         ]
     },
     {
-        id:1,
-        mainCategory:'Wrapping Machine',
-        subCategory:'Toilet',
-        productName:'MDT 16K – 3 Servo Axis',
-        brochureLink:'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT-16K-3-SERVO-AXIS-1.pdf',
-        videoLink:'https://youtu.be/n6wxLujRoIc',
-        specifications:{
+        id: 1,
+        mainCategory: 'Wrapping Machine',
+        subCategory: 'Toilet',
+        productName: 'MDT 16K – 3 Servo Axis',
+        brochureLink: 'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT-16K-3-SERVO-AXIS-1.pdf',
+        videoLink: 'https://youtu.be/n6wxLujRoIc',
+        specifications: {
             "Production Rate": "Upto 200 ppm, Depending upon shape size and moisture content",
             "Electrical Supply": "3 kW (Max)",
             "Power": "220VOLTS",
             "Consumption": "SINGLE PHASE 50/60HZ",
             "Dimension": "3965(L) X 1220(W) X 1829(H) mm",
             "Weight": "1300 kg (approx)"
-          },
-        features:[
+        },
+        features: [
             `7" colored HMI`,
             "Mitsubishi 8 AXIS Motion Controller, Servo drives, Servo motors & HMI used",
             "All Servo's equipped with Absolute Encoders",
@@ -99,17 +99,17 @@ const products = [
             "Bidirectional print control system with worm and worm wheel mechanism",
             "Provision of LHS and RHS belt conveyor",
             "Tripod stands to provide extra strength to discharge"
-          ]
+        ]
     },
     {
-        id:2,
-        mainCategory:'Flow Wrap',
-        subCategory:'Toilet Soap Packing',
-        productName:'BFW Excel',
-        imageLink:'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT16K-2.jpg',
-        brochureLink:'https://bmpackingmachines.com/wp-content/uploads/2020/11/bfw-excel-1.pdf',
-        videoLink:'https://www.youtube.com/watch?v=FXxXgBYG5-A',
-        specifications:{
+        id: 2,
+        mainCategory: 'Flow Wrap',
+        subCategory: 'Toilet Soap Packing',
+        productName: 'BFW Excel',
+        imageLink: 'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT16K-2.jpg',
+        brochureLink: 'https://bmpackingmachines.com/wp-content/uploads/2020/11/bfw-excel-1.pdf',
+        videoLink: 'https://www.youtube.com/watch?v=FXxXgBYG5-A',
+        specifications: {
             "Production Rate": "Upto 360 ppm, Depending upon shape size and moisture content",
             "Electrical Supply": "5.5 kW (Max)",
             "Power": "220VOLTS",
@@ -142,7 +142,48 @@ const products = [
             "CE marked electrical components",
             "Speed will be 300 soaps/min.(speed depend upon size and input)",
             "Collator for standing the soap"
-          ]
+        ]
+    },
+    {
+        id: 3,
+        mainCategory: 'Flow Wrap',
+        imageLink: 'https://bmpackingmachines.com/wp-content/uploads/2020/11/MDT16K-2.jpg',
+        brochureLink: 'https://bmpackingmachines.com/wp-content/uploads/2020/11/bfw-excel-1.pdf',
+        videoLink: 'https://www.youtube.com/watch?v=FXxXgBYG5-A',
+        specifications: {
+            "Production Rate": "Upto 360 ppm, Depending upon shape size and moisture content",
+            "Electrical Supply": "5.5 kW (Max)",
+            "Power": "220VOLTS",
+            "Consumption": "SINGLE PHASE 50/60HZ",
+            "Dimension": "3965(L) X 0915(W) X 2134(H) mm",
+            "Weight": "1500 kg (approx)"
+        },
+        features: [
+            "Touch Screen controlled HMI for stop, start, speed, temperature control, timing of various servo motors, recipes of different sizes and print control etc.",
+            "Straight feed product transfer system driven by servo motor",
+            "Product is transferred into the in feed pusher conveyor with help of servo controlled smart belt conveyor",
+            "Provision of product overlap machine stop-prevents any damage",
+            "Double set of sealing jaws for high speed operation",
+            "Positive drive to wrapper unwind with the help of timing belt and easy release of pressure roller for new wrapper feeding",
+            "Two stage static heater for long seal",
+            "All heaters are 50 vAC for operator safety and 24 vDc supply for control voltage",
+            "Inbuilt step down 7k VA isolation transfer for rotation of servo Motors & motion controllers",
+            "Four way adjustable forming box",
+            "User friendly HMI with process Diagnostic",
+            "Online print control adjustment through HMI",
+            "Torque limiter through PLC in case of accidental jamming of products",
+            "Product feeder conveyor moved by infinity variable speed drive gear box motor",
+            "Automatic dwell adjustment of cutting knife and sealing jaws as per wrapper pitch",
+            "Changeover with selection of recipes by selecting pre saved product details",
+            "No Product – no pouch arrangement",
+            "Pre installed online UPS for HMI running Parameters",
+            "Changeable cutting knife timing with respect to in feed, even in running machine",
+            "Total stainless steel guards, bed plates and other product touching parts",
+            "Single casted structure",
+            "CE marked electrical components",
+            "Speed will be 300 soaps/min.(speed depend upon size and input)",
+            "Collator for standing the soap"
+        ]
     },
 ]
 
@@ -153,43 +194,97 @@ let enquiries = [
 let subscribers = []
 
 
-app.get('/',(req, res)=>{
+app.get('/', (req, res) => {
     res.send('The Server Is Up & Running')
 })
 
 
-app.get('/api/products',(req, res) => {
+app.get('/api/products', (req, res) => {
     res.json(products)
 })
 
-app.get('/api/enquiries',(req, res) => {
+app.get('/api/enquiries', (req, res) => {
     res.json(enquiries)
 })
 
-app.get('/api/subscribers',(req, res) => {
+app.get('/api/subscribers', (req, res) => {
     res.json(subscribers)
 })
 
-app.get('/api/products/:id',(req, res) => {
+app.get('/api/products/:id', (req, res) => {
     const id = Number(req.params.id)
     const product = products.find(product => product.id === id)
-    if(product){
+    if (product) {
         res.json(product)
     }
-    else{
+    else {
         res.json({
-            message:`The Product Doesn't Exist`
+            message: `The Product Doesn't Exist`
         })
     }
 })
 
-app.post('/api/contact',(req, res)=>{
+app.get('/api/productdropdown/', (req, res) => {
+    const multilevelDropdownData = [];
+
+    for (const product of products) {
+        const mainCategory = product.mainCategory;
+        const subCategory = product.subCategory;
+        const productName = product.productName;
+        const productId = product.id
+
+        multilevelDropdownData.push([mainCategory, subCategory, productName, productId]);
+    }
+
+    const multilevelJson = [];
+
+    for (const level of multilevelDropdownData) {
+        const mainCategoryExists = multilevelJson.find(item => item.title === level[0])
+        if (!mainCategoryExists) {
+            const node = {
+                title: level[0],
+                children: [
+                    {
+                        title: level[1],
+                        children: [
+                            { id:level.at(-1),title: level[2] }
+                        ]
+                    }
+                ]
+            };
+            multilevelJson.push(node);
+        }
+        else {
+            const subCategoryExists = mainCategoryExists.children.find(item => item.title === level[1])
+            if(!subCategoryExists){
+                const node = {
+                    title: level[1],
+                    children: [
+                        {
+                            id:level.at(-1),
+                            title: level[2],
+                        }
+                    ]
+                };
+                mainCategoryExists.children.push(node)
+            }
+            else{
+                subCategoryExists.children.push({id:level.at(-1),title:level[2]})
+            }
+        }
+    }
+
+    res.json(multilevelJson);
+    res.end()
+})
+
+app.post('/api/contact', (req, res) => {
     const body = req.body;
     enquiries = enquiries.concat(body)
     res.json('Added Enquiry')
 })
 
-app.post('/api/subscribe',(req, res)=>{
+app.post('/api/subscribe', (req, res) => {
     const email = req.body.email;
     subscribers = subscribers.concat(email)
     res.json('Added Subscriber')
@@ -197,6 +292,6 @@ app.post('/api/subscribe',(req, res)=>{
 
 const PORT = 9999;
 
-app.listen(PORT, ()=> {
+app.listen(PORT, () => {
     console.log(`The Server Is Running On Port : ${PORT}`)
 })

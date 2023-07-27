@@ -10,6 +10,7 @@ function EnquiryForm({ isOpen, setIsOpen, productInfo, setOpenEnquirySuccess}) {
         .post('http://localhost:9999/api/contact', {...form, productName:productInfo.productName})
         .then((res) => {
           setOpenEnquirySuccess(true)
+          setForm({name: '', email: '', mobile: '', message: ''})
         })
         .catch((err) => {
           console.log(err)
@@ -55,24 +56,24 @@ function EnquiryForm({ isOpen, setIsOpen, productInfo, setOpenEnquirySuccess}) {
                     </p>
   
                     <div className='flex flex-col gap-4'>
-                      <input placeholder='Name' className='border-[1px] p-2' onChange={(e)=>{setForm({...form,name:e.target.value})}}/>
-                      <input placeholder='Email' className='border-[1px] p-2' onChange={(e)=>{setForm({...form,email:e.target.value})}}/>
-                      <input placeholder='Mobile' className='border-[1px] p-2' onChange={(e)=>{setForm({...form,mobile:e.target.value})}}/>
+                      <input placeholder='Name' className='border-[1px] p-2' value={form.name} onChange={(e)=>{setForm({...form,name:e.target.value})}}/>
+                      <input placeholder='Email' className='border-[1px] p-2' value={form.email} onChange={(e)=>{setForm({...form,email:e.target.value})}}/>
+                      <input placeholder='Mobile' className='border-[1px] p-2' value={form.mobile} onChange={(e)=>{setForm({...form,mobile:e.target.value})}}/>
                       <input value={productInfo.productName} className='border-[1px] p-2' readOnly/>
-                      <textarea rows={5} className='border-[1px] p-2' placeholder='Message' onChange={(e)=>{setForm({...form,message:e.target.value})}}></textarea>
+                      <textarea rows={5} className='border-[1px] p-2' placeholder='Message' value={form.message} onChange={(e)=>{setForm({...form,message:e.target.value})}}></textarea>
                     </div>
   
                     <div className="flex justify-end gap-4 mt-4">
                       <button
                         type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="text-lightBrown border-[1px] border-lightBrown p-2 rounded-md text-base hover:bg-lightBrown hover:text-white transition-colors duration-300"
                         onClick={() => { setIsOpen(false);handleSubmit()}}
                       >
                         Send
                       </button>
                       <button
                         type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className="text-lightBrown border-[1px] border-lightBrown p-2 rounded-md text-base hover:bg-lightBrown hover:text-white transition-colors duration-300"
                         onClick={() => { setIsOpen(false) }}
                       >
                         Close

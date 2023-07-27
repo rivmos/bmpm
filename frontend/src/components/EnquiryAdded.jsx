@@ -32,14 +32,14 @@ function EnquirySuccess({ isOpen, setIsOpen, message }) {
               >
                 <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className='flex items-center flex-col gap-4'>
-                    <i class="fa-solid fa-circle-check text-4xl text-green-500 shadow-sm rounded-full shadow-green-400"></i>
+                    <i class="fa-solid fa-circle-check text-4xl text-lightBrown shadow-sm rounded-full"></i>
                     <p>{message}</p>
                   </div>
 
                   <div className="flex justify-center gap-4 mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="text-lightBrown border-[1px] border-lightBrown p-2 rounded-md text-base hover:bg-lightBrown hover:text-white transition-colors duration-300"
                       onClick={() => { setIsOpen(false) }}
                     >
                       Close

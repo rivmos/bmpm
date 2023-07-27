@@ -1,8 +1,10 @@
 import React from 'react'
+import {useRouteError} from 'react-router-dom'
 
 const Error = () => {
+  const error = useRouteError()
   return (
-    <div>You Put Your Foot On A Wrong Note:(</div>
+    <div className='text-4xl font-bold flex justify-center items-center h-screen'>{error.statusText}{':('}</div>
   )
 }
 
