@@ -10,10 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@barba/core": "^2.9.7",
     "@headlessui/react": "^1.7.15",
     "@szhsin/react-menu": "^4.0.2",
-    "animejs": "^3.2.1",
     "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
