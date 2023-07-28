@@ -8,7 +8,7 @@ const StateName = ({text}) => <div className='text-center mb-12 mt-32 text-3xl f
 const Clients = () => {
     return (
         <div>
-            <div className='bg-about-one'>
+            <div className='bg-about-one bg-cover'>
                 <div className='text-5xl text-white h-[700px] grid place-content-center'>
                     <span className='border-b-[1px] border-lightBrown'>CLIENT LIST</span>
                 </div>

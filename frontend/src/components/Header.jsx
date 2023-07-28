@@ -110,7 +110,7 @@ const Header = () => {
             <div className='flex items-center max-w-8xl mx-auto justify-between h-32'>
                 <div>
                     <Link to="/">
-                        <motion.img animate={{ x: [200, 0] }} transition={{ type: "spring" }} src='/logo.jpg' className='w-24 rounded-lg' />
+                        <motion.img animate={{ y: [-200, 0]}} transition={{ type: "spring" }} src='/logo.jpg' className='w-24 rounded-full' />
                         {/* <img /> */}
                     </Link>
                 </div>

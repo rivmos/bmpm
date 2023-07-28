@@ -101,7 +101,7 @@ export const ImageCarousal = () => {
                 <i class="fa-solid fa-angle-left"></i>
             </div>
             <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-2xl flex gap-2">
-                {images.map((item, index)=><i class="fa-regular fa-circle cursor-pointer" style={{color:imageIndex === index ? "#b39573" : '#fff'}} onClick={()=> setPage([index, index < page ? -1 : 1])}></i>)}
+                {images.map((item, index)=><i key={item.src} class="fa-regular fa-circle cursor-pointer" style={{color:imageIndex === index ? "#b39573" : '#fff'}} onClick={()=> setPage([index, index < page ? -1 : 1])}></i>)}
             </div>
         </div >
     );

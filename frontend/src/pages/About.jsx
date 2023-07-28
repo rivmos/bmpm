@@ -3,7 +3,7 @@ import NewsLetter from '../components/Newsletter'
 const About = () => {
   return (
     <div>
-      <div className='bg-about-one'>
+      <div className='bg-about-one bg-cover'>
         <div className='text-5xl text-white h-[700px] grid place-content-center'>
           <span className='border-b-[1px] border-lightBrown'>ABOUT US</span>
         </div>

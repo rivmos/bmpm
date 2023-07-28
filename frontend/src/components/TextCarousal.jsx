@@ -2,12 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wrap } from "popmotion";
-
-const images = [
-    { src: "/images/ab-1.jpg", mainHeading: 'Packing Solution Is Our Main Strength!', subHeading: 'Soap Wrapping Machines' },
-    { src: "/images/ab-2.jpg", mainHeading: 'Packing Solution Is Our Main Strength!', subHeading: 'Soap Wrapping Machines' },
-    { src: "/images/ab-3.jpg", mainHeading: 'Packing Solution Is Our Main Strength!', subHeading: 'Soap Wrapping Machines' }
-];
+import { testimonialsData } from "../data/testimonials";
 
 const variants = {
     enter: (direction) => {
@@ -33,6 +28,20 @@ const variants = {
     }
 };
 
+const TestimonialSlide = ({imageIndex}) => {
+    return (
+        <>
+            <div className="select-none">
+                <div className="text-3xl text-center mb-8">{testimonialsData[imageIndex].clientComment.toUpperCase()}</div>
+                <p className="text-xl text-center">{testimonialsData[imageIndex].clientMessage}</p>
+                <div className="flex justify-center my-8"><div className="w-16 h-[1px] bg-white"></div></div>
+                <div className="text-xl text-center">{testimonialsData[imageIndex].clientName}</div>
+                <div className="text-xl text-center">{testimonialsData[imageIndex].clientCompanyName}</div>
+            </div>
+        </>
+    )
+}
+
 /**
  * Experimenting with distilling swipe offset and velocity into a single variable, so the
  * less distance a user has swiped, the more velocity they need to register as a swipe.
@@ -47,11 +56,11 @@ const swipePower = (offset, velocity) => {
 export const TextCarousal = () => {
     const [[page, direction], setPage] = useState([0, 0]);
 
-    // We only have 3 images, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
+    // We only have 3 testimonials, but we paginate them absolutely (ie 1, 2, 3, 4, 5...) and
     // then wrap that within 0-2 to find our image ID in the array below. By passing an
     // absolute page index as the `motion` component's `key` prop, `AnimatePresence` will
-    // detect it as an entirely new image. So you can infinitely paginate as few as 1 images.
-    const imageIndex = wrap(0, images.length, page);
+    // detect it as an entirely new image. So you can infinitely paginate as few as 1 testimonialsData.
+    const imageIndex = wrap(0, testimonialsData.length, page);
 
     const paginate = (newDirection) => {
         setPage([page + newDirection, newDirection]);
@@ -59,6 +68,7 @@ export const TextCarousal = () => {
 
     return (
         <div className="relative overflow-hidden bg-cara">
+            <div className="text-center mt-16 text-darkGrey text-4xl">Clients Are Important To Us</div>
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
                     className="overflow-hidden w-full h-[600px]"
@@ -86,12 +96,7 @@ export const TextCarousal = () => {
                     }}
                 >
                     <div className="absolute px-8 py-20 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-white border-2 text-white">
-                        <div className="select-none">
-                            <div className="text-2xl text-center mb-8">{images[imageIndex].mainHeading.toUpperCase()}</div>
-                            <p className="text-xl text-center">We are extremely satisfied with the next-gen solutions we have received from BM Packing. With their pioneering innovation, extensive domain knowledge and competency in the products, we have been able to deliver exceptionally well.</p>
-                            <div className="flex justify-center my-8"><div className="w-32 h-[1px] bg-white"></div></div>
-                            <div className="text-3xl text-center">{images[imageIndex].mainHeading}</div>
-                        </div>
+                        <TestimonialSlide imageIndex={imageIndex}/>
                     </div>
                 </motion.div>
             </AnimatePresence>
@@ -102,7 +107,7 @@ export const TextCarousal = () => {
                 <i class="fa-solid fa-angle-left"></i>
             </div>
             <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-2xl flex gap-2">
-                {images.map((item, index) => <i class="fa-solid fa-circle cursor-pointer" style={{ color: imageIndex === index ? "#fff" : '#00000050' }} onClick={() => setPage([index, index < page ? -1 : 1])}></i>)}
+                {testimonialsData.map((item, index) => <i key={item.clientName} class="fa-solid fa-circle cursor-pointer" style={imageIndex === index ? {color:"#fff"} : {color:'#00000050'}} onClick={() => setPage([index, index < page ? -1 : 1])}></i>)}
             </div>
         </div >
     );
