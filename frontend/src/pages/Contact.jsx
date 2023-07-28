@@ -5,7 +5,7 @@ import NewsLetter from '../components/Newsletter'
 const Contact = () => {
   return (
     <div>
-      <div className='bg-about-one bg-cover'>
+      <div className='bg-about-one'>
         <div className='text-5xl text-white h-[700px] grid place-content-center'>
           <span className='border-b-[1px] border-lightBrown'>CONTACT US</span>
         </div>
@@ -18,6 +18,7 @@ const Contact = () => {
       </div>
       <Socials />
       <PageContactForm />
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3429.984715678544!2d76.68910461554357!3d30.71883008164199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feeb000000001%3A0xb6f5631271db613b!2sB.%20M.%20Packing%20Machines!5e0!3m2!1sen!2sin!4v1676011234168!5m2!1sen!2sin" width="100%" height="450"></iframe>
       <NewsLetter />
     </div>
   )
