@@ -2,3 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .legal-paragraph {
+      @apply mb-2;
+    }
+  }

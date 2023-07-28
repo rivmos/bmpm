@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu } from '@headlessui/react'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -28,20 +28,20 @@ const Footer = () => {
                         <div className='text-2xl font-semibold'>Navigate</div>
                         <div className='bg-lightBrown h-[2px] w-16'></div>
                         <ul className='flex flex-col gap-1'>
-                            <li><a href='/' className='hover:text-lightBrown'>Home</a></li>
-                            <li><a href='/' className='hover:text-lightBrown'>About Us</a></li>
-                            <li><a href='/' className='hover:text-lightBrown'>Our Products</a></li>
-                            <li><a href='/' className='hover:text-lightBrown'>Testimonials</a></li>
-                            <li><a href='/' className='hover:text-lightBrown'>Client List</a></li>
-                            <li><a href='/' className='hover:text-lightBrown'>Contact Us</a></li>
+                            <li><Link to='/' className='hover:text-primaryBrown'>Home</Link></li>
+                            <li><Link to='/aboutus' className='hover:text-primaryBrown'>About Us</Link></li>
+                            <li><Link to='/ourproducts' className='hover:text-primaryBrown'>Our Products</Link></li>
+                            <li><Link to='/testimonials' className='hover:text-primaryBrown'>Testimonials</Link></li>
+                            <li><Link to='/clients' className='hover:text-primaryBrown'>Client List</Link></li>
+                            <li><Link to='/contactus' className='hover:text-primaryBrown'>Contact Us</Link></li>
                         </ul>
                     </div>
                     <div className='flex flex-col gap-4'>
                         <div className='text-2xl font-semibold'>Company</div>
                         <div className='bg-lightBrown h-[2px] w-16'></div>
                         <div className='flex flex-col gap-2'>
-                            <span className='hover:text-lightBrown cursor-pointer'>Privacy</span>
-                            <span className='hover:text-lightBrown cursor-pointer'>Disclaimer</span>
+                            <span><Link to='/privacy' className='hover:text-primaryBrown'>Privacy</Link></span>
+                            <span><Link to='/disclaimer' className='hover:text-primaryBrown'>Disclaimer</Link></span>
                         </div>
                     </div>
                 </div>

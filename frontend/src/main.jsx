@@ -13,6 +13,9 @@ import Testimonials from './pages/Testimonials.jsx';
 import Error from './pages/Error.jsx';
 import './index.css'
 import ProductPage from './pages/ProductPage.jsx';
+import Products from './pages/Products.jsx';
+import Privacy from './pages/Legal/Privacy.jsx';
+import Disclaimer from './pages/Legal/Disclaimer.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +46,19 @@ const router = createBrowserRouter([
       {
         path:'/product',
         element: <ProductPage/>
-      }
+      },
+      {
+        path:'/ourproducts',
+        element: <Products/>
+      },
+      {
+        path:'/privacy',
+        element: <Privacy/>
+      },
+      {
+        path:'/disclaimer',
+        element: <Disclaimer/>
+      },
     ]
   }
 ]);
