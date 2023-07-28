@@ -4,7 +4,7 @@ import { Menu } from '@headlessui/react'
 const Footer = () => {
     return (
         <div className='bg-darkGrey text-white'>
-            <div className='max-w-7xl flex flex-col mx-auto py-12 gap-4'>
+            <div className='max-w-8xl flex flex-col mx-auto py-12 gap-4'>
                 {/* Sections */}
                 <div className='grid grid-cols-4'>
                     <div className='flex flex-col gap-4 col-span-2'>

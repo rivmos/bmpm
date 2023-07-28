@@ -17,9 +17,13 @@ export default {
         'about-one':"url('/images/ab-1.jpg')",
         'about-two':"url('/images/ab-2.jpg')",
         'about-three':"url('/images/ab-3.jpg')",
+        'cara':"url('/images/cara.jpg')",
       },
       fontFamily:{
         open:['Open Sans', 'sans-serif']
+      },
+      maxWidth: {
+        '8xl': '1500px',
       }
     },
   },

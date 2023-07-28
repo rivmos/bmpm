@@ -17,7 +17,7 @@ const Clients = () => {
                 <p className='text-4xl mb-4'>BM Packing</p>
                 <p className='text-4xl text-lightBrown'>PROVIDE SERVICES UP TO <span className='font-semibold'>164 CLIENTS</span> ACROSS INDIA</p>
             </div>
-            <div className='max-w-[1500px] py-36 px-48 mx-auto bg-lightGrey grid grid-cols-2 relative'>
+            <div className='max-w-8xl py-36 px-48 mx-auto bg-lightGrey grid grid-cols-2 relative'>
                 <div>
                     <ul className='flex flex-col gap-4 text-2xl font-semibold'>
                         <MapStateName text="ANDHRA PRADESH"/>
@@ -29,7 +29,7 @@ const Clients = () => {
                 <div></div>
                 <img src='/images/map.png' className='absolute right-0 -top-20'/>
             </div>
-            <div className='max-w-[1500px] mx-auto py-32'>
+            <div className='max-w-8xl mx-auto py-32'>
                 <StateName text="ANDHRA PRADESH" />
                 <div className='grid grid-cols-3 gap-8'>
                     <CompanyName text="Kudrat Soap Products"/>

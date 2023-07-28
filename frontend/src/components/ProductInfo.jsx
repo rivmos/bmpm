@@ -11,7 +11,7 @@ const Heading = ({ text }) => {
 }
 
 
-const Product = () => {
+const ProductInfo = () => {
   const [productInfo, setProductInfo] = useState([])
   const [formOpen, setFormOpen] = useState(false)
   const [openEnquirySuccess, setOpenEnquirySuccess] = useState(false)
@@ -24,7 +24,7 @@ const Product = () => {
       })
   }, [])
   return (
-    <div className='max-w-7xl mx-auto'>
+    <div className='max-w-8xl mx-auto'>
       <EnquiryForm isOpen={formOpen} setIsOpen={setFormOpen} productInfo={productInfo} setOpenEnquirySuccess={setOpenEnquirySuccess} />
       <EnquiryAdded isOpen={openEnquirySuccess} setIsOpen={setOpenEnquirySuccess} message="Success" />
       <div className='flex justify-center py-12'>Products / {productInfo.mainCategory} {productInfo.subCategory && ` / ${productInfo.subCategory}`} / {productInfo?.productName}</div>
@@ -96,4 +96,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default ProductInfo

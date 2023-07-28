@@ -12,6 +12,7 @@ import Clients from './pages/Clients.jsx';
 import Testimonials from './pages/Testimonials.jsx';
 import Error from './pages/Error.jsx';
 import './index.css'
+import ProductPage from './pages/ProductPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path:'/testimonials',
         element: <Testimonials/>
+      },
+      {
+        path:'/product',
+        element: <ProductPage/>
       }
     ]
   }

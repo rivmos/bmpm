@@ -2,7 +2,7 @@ import React from 'react'
 
 const Socials = () => {
     return (
-        <div className='grid grid-cols-4 gap-4 justify-center max-w-7xl mx-auto py-16'>
+        <div className='grid grid-cols-4 gap-4 justify-center max-w-8xl mx-auto py-16'>
             <a href='tel:+919216901406'>
                 <div className='bg-lightGrey py-16 flex flex-col gap-4 text-center'>
                     <i class="fa-solid fa-phone text-4xl text-lightBrown"></i>

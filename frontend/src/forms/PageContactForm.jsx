@@ -20,7 +20,7 @@ function PageContactForm({ setOpenEnquirySuccess }) {
 
     return (
         <>
-            <div className="max-w-7xl mx-auto py-16">
+            <div className="max-w-8xl mx-auto py-24">
                 <EnquiryAdded isOpen={successOpen} setIsOpen={setSuccessOpen} message="Enquiry Added Successfully!"/>
                 <p className="text-4xl text-center text-gray-500 pb-12">
                     We are here to help you!

@@ -22,7 +22,7 @@ const Testimonials = () => {
                     <span className='border-b-[1px] border-lightBrown'>TESTIMONIALS</span>
                 </div>
             </div>
-            <div className='my-32 max-w-[1500px] mx-auto text-center'>
+            <div className='my-32 max-w-8xl mx-auto text-center'>
                 <p className="text-4xl text-gray-500 pb-12">
                     What our clients say
                 </p>

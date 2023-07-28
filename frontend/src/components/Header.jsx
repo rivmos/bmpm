@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
+import { motion } from 'framer-motion';
 
 
 function MyDropdown() {
@@ -80,9 +81,13 @@ function MyDropdown() {
                                                 {
                                                     item.children && item.children.map(item => {
                                                         return (
-                                                            (<MenuItem key={item.title} onClick={() => showProduct(item.id)}>
-                                                                {item.title}
-                                                            </MenuItem>)
+                                                            (
+                                                                <Link to='product'>
+                                                                    <MenuItem key={item.title} onClick={() => showProduct(item.id)}>
+                                                                        {item.title}
+                                                                    </MenuItem>
+                                                                </Link>
+                                                            )
                                                         )
                                                     })
                                                 }
@@ -101,11 +106,12 @@ function MyDropdown() {
 
 const Header = () => {
     return (
-        <div className='max-w-7xl mx-auto'>
-            <div className='fixed top-0 left-0 flex w-full items-center justify-around h-32 bg-white shadow-md z-50'>
+        <div className='fixed top-0 left-0 w-full bg-white z-50 shadow-md'>
+            <div className='flex items-center max-w-8xl mx-auto justify-between h-32'>
                 <div>
                     <Link to="/">
-                        <img src='/logo.jpg' className='w-24 rounded-lg' />
+                        <motion.img animate={{ x: [200, 0] }} transition={{ type: "spring" }} src='/logo.jpg' className='w-24 rounded-lg' />
+                        {/* <img /> */}
                     </Link>
                 </div>
                 <div>

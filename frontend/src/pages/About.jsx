@@ -26,7 +26,7 @@ const About = () => {
 
       </div>
 
-      <div className='grid grid-cols-3 max-w-7xl mx-auto gap-4'>
+      <div className='grid grid-cols-3 max-w-8xl mx-auto gap-4'>
         <div className='col-span-2'>
           <img src='/images/ab-3.jpg' className='h-full'/>
         </div>
@@ -36,7 +36,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className='flex flex-col gap-8 max-w-7xl text-center mx-auto py-28 text-lg'>
+      <div className='flex flex-col gap-8 max-w-8xl text-center mx-auto py-28 text-lg'>
         <p>
           Through innovative design and superb craftsmanship, we are continually expanding our range of speciality products day after day.
         </p>
