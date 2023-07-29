@@ -61,7 +61,7 @@ export const ImageCarousal = () => {
         <div className="relative overflow-hidden">
             <AnimatePresence initial={false} custom={direction}>
                 <motion.img
-                    className="overflow-hidden w-full h-[700px]"
+                    className="overflow-hidden w-full h-[250px] sm:h-[400px] md:h-[700px]"
                     key={page}
                     src={images[imageIndex].src}
                     custom={direction}
@@ -86,21 +86,21 @@ export const ImageCarousal = () => {
                         }
                     }}
                 />
-                <div className="absolute w-full top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+                <div className="absolute w-full top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] px-8">
                     <div className="select-none">
-                        <div className="text-4xl text-white text-center">{images[imageIndex].mainHeading.toUpperCase()}</div>
-                        <div className="flex justify-center my-8"><div className="w-32 h-[1px] bg-lightBrown"></div></div>
-                        <div className="text-3xl text-white text-center">{images[imageIndex].mainHeading}</div>
+                        <div className="text-xl md:text-4xl text-white text-center">{images[imageIndex].mainHeading.toUpperCase()}</div>
+                        <div className="flex justify-center my-4 md:my-8"><div className="w-12 md:w-32 h-[1px] bg-lightBrown"></div></div>
+                        <div className="text-base md:text-3xl text-white text-center">{images[imageIndex].mainHeading}</div>
                     </div>
                 </div>
             </AnimatePresence>
-            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full w-16 h-16 text-white text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
+            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full px-2 md:px-6 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
                 <i class="fa-solid fa-angle-right"></i>
             </div>
-            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full w-16 h-16 text-white text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
+            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full px-2 md:px-6 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
                 <i class="fa-solid fa-angle-left"></i>
             </div>
-            <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-2xl flex gap-2">
+            <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-sm md:text-2xl flex gap-2">
                 {images.map((item, index)=><i key={item.src} class="fa-regular fa-circle cursor-pointer" style={{color:imageIndex === index ? "#b39573" : '#fff'}} onClick={()=> setPage([index, index < page ? -1 : 1])}></i>)}
             </div>
         </div >

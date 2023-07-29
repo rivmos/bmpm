@@ -224,7 +224,7 @@ app.get('/api/products/:id', (req, res) => {
     }
 })
 
-app.get('/api/productdropdown/', (req, res) => {
+app.get('/api/dropdowndata/', (req, res) => {
     const multilevelDropdownData = [];
 
     for (const product of products) {

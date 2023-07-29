@@ -13,7 +13,7 @@ function MyDropdown() {
     const [menuData, setMenuData] = useState([])
     useEffect(() => {
         axios
-            .get('http://localhost:9999/api/productdropdown')
+            .get('http://localhost:9999/api/dropdowndata')
             .then(res => {
                 setMenuData(res.data)
             })
@@ -82,7 +82,7 @@ function MyDropdown() {
                                                     item.children && item.children.map(item => {
                                                         return (
                                                             (
-                                                                <Link to='product'>
+                                                                <Link to={`/ourproducts/${item.id}`}>
                                                                     <MenuItem key={item.title} onClick={() => showProduct(item.id)}>
                                                                         {item.title}
                                                                     </MenuItem>
@@ -106,7 +106,7 @@ function MyDropdown() {
 
 const Header = () => {
     return (
-        <div className='fixed top-0 left-0 w-full bg-white z-50 shadow-md'>
+        <div className='hidden sm:block fixed top-0 left-0 w-full bg-white z-50 shadow-md'>
             <div className='flex items-center max-w-8xl mx-auto justify-between h-32'>
                 <div>
                     <Link to="/">

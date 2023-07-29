@@ -11,18 +11,18 @@ const Heading = ({ text }) => {
 }
 
 
-const ProductInfo = () => {
-  const [productInfo, setProductInfo] = useState([])
+const ProductInfo = ({productInfo}) => {
+  // const [productInfo, setProductInfo] = useState([])
   const [formOpen, setFormOpen] = useState(false)
   const [openEnquirySuccess, setOpenEnquirySuccess] = useState(false)
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:9999/api/products/2')
-      .then((res) => {
-        setProductInfo(res.data)
-      })
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:9999/api/products/2')
+  //     .then((res) => {
+  //       setProductInfo(res.data)
+  //     })
+  // }, [])
   return (
     <div className='max-w-8xl mx-auto'>
       <EnquiryForm isOpen={formOpen} setIsOpen={setFormOpen} productInfo={productInfo} setOpenEnquirySuccess={setOpenEnquirySuccess} />

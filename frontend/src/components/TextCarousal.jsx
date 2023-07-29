@@ -32,11 +32,11 @@ const TestimonialSlide = ({imageIndex}) => {
     return (
         <>
             <div className="select-none">
-                <div className="text-3xl text-center mb-8">{testimonialsData[imageIndex].clientComment.toUpperCase()}</div>
-                <p className="text-xl text-center">{testimonialsData[imageIndex].clientMessage}</p>
+                <div className="text-xl md:text-3xl text-center mb-8">{testimonialsData[imageIndex].clientComment.toUpperCase()}</div>
+                <p className="text-sm md:text-xl text-center">{testimonialsData[imageIndex].clientMessage}</p>
                 <div className="flex justify-center my-8"><div className="w-16 h-[1px] bg-white"></div></div>
-                <div className="text-xl text-center">{testimonialsData[imageIndex].clientName}</div>
-                <div className="text-xl text-center">{testimonialsData[imageIndex].clientCompanyName}</div>
+                <div className="text-base md:text-xl text-center">{testimonialsData[imageIndex].clientName}</div>
+                <div className="text-base md:text-xl text-center">{testimonialsData[imageIndex].clientCompanyName}</div>
             </div>
         </>
     )
@@ -68,10 +68,10 @@ export const TextCarousal = () => {
 
     return (
         <div className="relative overflow-hidden bg-cara">
-            <div className="text-center mt-16 text-darkGrey text-4xl">Clients Are Important To Us</div>
+            <div className="text-center mt-6 md:mt-16 text-darkGrey text-2xl md:text-4xl">Clients Are Important To Us</div>
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
-                    className="overflow-hidden w-full h-[600px]"
+                    className="overflow-hidden w-full h-[250px] sm:h-[400px] md:h-[600px]"
                     key={page}
                     custom={direction}
                     variants={variants}
@@ -95,18 +95,18 @@ export const TextCarousal = () => {
                         }
                     }}
                 >
-                    <div className="absolute px-8 py-20 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-white border-2 text-white">
+                    <div className="absolute md:px-8 py-20 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-white border-2 text-white">
                         <TestimonialSlide imageIndex={imageIndex}/>
                     </div>
                 </motion.div>
             </AnimatePresence>
-            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full w-16 h-16 text-white text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
+            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full w-16 h-16 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
                 <i class="fa-solid fa-angle-right"></i>
             </div>
-            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full w-16 h-16 text-white text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
+            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full w-16 h-16 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
                 <i class="fa-solid fa-angle-left"></i>
             </div>
-            <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-2xl flex gap-2">
+            <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-sm md:text-2xl flex gap-2 ">
                 {testimonialsData.map((item, index) => <i key={item.clientName} class="fa-solid fa-circle cursor-pointer" style={imageIndex === index ? {color:"#fff"} : {color:'#00000050'}} onClick={() => setPage([index, index < page ? -1 : 1])}></i>)}
             </div>
         </div >
