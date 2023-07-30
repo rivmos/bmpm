@@ -21,13 +21,13 @@ function PageContactForm({ setOpenEnquirySuccess }) {
 
     return (
         <>
-            <div className="max-w-8xl mx-auto py-8 md:py-32">
+            <div className="max-w-8xl mx-auto py-12 md:py-16 px-6">
                 <EnquiryAdded isOpen={successOpen} setIsOpen={setSuccessOpen} message="Enquiry Added Successfully!"/>
-                <p className="text-2xl md:text-4xl text-center text-gray-500 pb-12">
-                    We are here to help you!
+                <p className="text-2xl md:text-4xl text-center text-gray-500 pb-8 md:pb-12">
+                    We Are Here To Help You!
                 </p>
 
-                <div className='flex flex-col gap-4 px-6'>
+                <div className='flex flex-col gap-4'>
                     <div className='w-full flex flex-col md:flex-row gap-4 md:gap-8'>
                         <input placeholder='Name' className='border-[1px] border-inputBorder p-2 w-full rounded-md' value={form.name} onChange={(e) => { setForm({ ...form, name: e.target.value }) }} />
                         <input placeholder='Email' className='border-[1px] border-inputBorder p-2  w-full rounded-md' value={form.email} onChange={(e) => { setForm({ ...form, email: e.target.value }) }} />

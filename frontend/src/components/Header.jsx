@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
+import { useLocation } from 'react-router-dom';
 import '@szhsin/react-menu/dist/index.css';
-import { motion } from 'framer-motion';
+import { color, motion } from 'framer-motion';
 
 
 function MyDropdown() {
@@ -11,6 +12,7 @@ function MyDropdown() {
     const [categoryName, setCategoryName] = useState('')
     const [subCategory, setSubCategory] = useState('')
     const [menuData, setMenuData] = useState([])
+    const location = useLocation()
     useEffect(() => {
         axios
             .get('http://localhost:9999/api/dropdowndata')
@@ -69,7 +71,7 @@ function MyDropdown() {
                     </ul>
                 </div>
             </div> */}
-            <Menu menuButton={<MenuButton>Our Products</MenuButton>}>
+            <Menu menuButton={<MenuButton className="flex items-center gap-2">Our Products<i class="fa-solid fa-angle-down mt-[2px]"></i></MenuButton>}>
                 {
                     menuData.map(item => {
                         return (
@@ -116,14 +118,14 @@ const Header = () => {
                 </div>
                 <div>
                     <ul className='flex gap-16 font-semibold'>
-                        <li><Link to='/' className='hover:text-primaryBrown'>Home</Link></li>
-                        <li><Link to='/aboutus' className='hover:text-primaryBrown'>About Us</Link></li>
+                        <li><Link to='/' className='hover:text-primaryBrown' style={{color:location.pathname === '/' && '#914a0e'}}>Home</Link></li>
+                        <li><Link to='/aboutus' className='hover:text-primaryBrown' style={{color:location.pathname === '/aboutus' && '#914a0e'}}>About Us</Link></li>
                         <li>
                             <MyDropdown />
                         </li>
-                        <li><Link to='/testimonials' className='hover:text-primaryBrown'>Testimonials</Link></li>
-                        <li><Link to='/clients' className='hover:text-primaryBrown'>Client List</Link></li>
-                        <li><Link to='/contactus' className='hover:text-primaryBrown'>Contact Us</Link></li>
+                        <li><Link to='/testimonials' className='hover:text-primaryBrown' style={{color:location.pathname === '/testimonials' && '#914a0e'}}>Testimonials</Link></li>
+                        <li><Link to='/clients' className='hover:text-primaryBrown' style={{color:location.pathname === '/clients' && '#914a0e'}}>Client List</Link></li>
+                        <li><Link to='/contactus' className='hover:text-primaryBrown' style={{color:location.pathname === '/contactus' && '#914a0e'}}>Contact Us</Link></li>
                     </ul>
                 </div>
             </div>

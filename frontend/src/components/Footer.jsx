@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
         <div className='bg-darkGrey text-white'>
-            <div className='max-w-8xl flex flex-col mx-auto py-12 gap-4'>
+            <div className='max-w-8xl flex flex-col mx-auto py-12 md:py-16 gap-4'>
                 {/* Sections */}
-                <div className='grid grid-cols-4'>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-8 px-6'>
                     <div className='flex flex-col gap-4 col-span-2'>
                         {/* Headline */}
                         <div className='text-2xl font-semibold'>Our Products</div>
@@ -46,7 +46,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex flex-col items-center py-10 text-black bg-lightGrey'>
+            <div className='flex flex-col items-center py-8 text-black bg-lightGrey'>
                 <span>&copy; 2023 BM Packing Machines</span>
                 <span>All rights reserved</span>
             </div>

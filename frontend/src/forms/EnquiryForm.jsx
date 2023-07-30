@@ -47,20 +47,20 @@ function EnquiryForm({ isOpen, setIsOpen, productInfo, setOpenEnquirySuccess}) {
                   <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                     <Dialog.Title
                       as="h3"
-                      className="text-4xl font-medium leading-6 text-gray-900"
+                      className="text-2xl md:text-4xl font-medium leading-6 text-gray-900"
                     >
                       ENQUIRE NOW
                     </Dialog.Title>
-                    <p className="text-base text-gray-500 py-8">
+                    <p className="text-sm md:text-base text-gray-500 py-8">
                       If you have any quereis kindly take a moment to fill up this form, our representatives will contact you shortly.
                     </p>
   
                     <div className='flex flex-col gap-4'>
-                      <input placeholder='Name' className='border-[1px] p-2' value={form.name} onChange={(e)=>{setForm({...form,name:e.target.value})}}/>
-                      <input placeholder='Email' className='border-[1px] p-2' value={form.email} onChange={(e)=>{setForm({...form,email:e.target.value})}}/>
-                      <input placeholder='Mobile' className='border-[1px] p-2' value={form.mobile} onChange={(e)=>{setForm({...form,mobile:e.target.value})}}/>
-                      <input value={productInfo.productName} className='border-[1px] p-2' readOnly/>
-                      <textarea rows={5} className='border-[1px] p-2' placeholder='Message' value={form.message} onChange={(e)=>{setForm({...form,message:e.target.value})}}></textarea>
+                      <input placeholder='Name' className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' value={form.name} onChange={(e)=>{setForm({...form,name:e.target.value})}}/>
+                      <input placeholder='Email' className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' value={form.email} onChange={(e)=>{setForm({...form,email:e.target.value})}}/>
+                      <input placeholder='Mobile' className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' value={form.mobile} onChange={(e)=>{setForm({...form,mobile:e.target.value})}}/>
+                      <input value={productInfo.productName} className='border-[1px] border-inputBorder p-2 w-full rounded-md text-sm md:text-base' readOnly/>
+                      <textarea rows={5} className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' placeholder='Message' value={form.message} onChange={(e)=>{setForm({...form,message:e.target.value})}}></textarea>
                     </div>
   
                     <div className="flex justify-end gap-4 mt-4">

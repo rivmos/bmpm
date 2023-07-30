@@ -1,12 +1,12 @@
 import React from 'react'
 import Newsletter from '../../components/Newsletter'
 
-const Heading = ({text}) => <h1 className='text-3xl mt-6 mb-2'>{text}</h1>
+const Heading = ({text}) => <h1 className='text-2xl md:text-3xl mt-8 mb-4'>{text}</h1>
 
 const Privacy = () => {
     return (<>
-        <div className='max-w-8xl mx-auto'>
-            <h1 className='text-center text-5xl py-12'>Privacy Policy</h1>
+        <div className='max-w-8xl mx-auto px-6'>
+            <h1 className='text-center text-3xl md:text-5xl py-8 md:py-12'>Privacy Policy</h1>
             At BM Packing Machines, accessible from <a href="https://bmpackingmachines.com/" className='hover:text-lightBrown text-darkGrey'>https://bmpackingmachines.com/</a>, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by BM Packing Machines and how we use it.<p className='legal-paragraph'></p>
             <p className='legal-paragraph'>If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
 

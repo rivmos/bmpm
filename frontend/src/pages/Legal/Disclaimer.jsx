@@ -1,15 +1,15 @@
 import React from 'react'
 import Newsletter from '../../components/Newsletter'
 
-const Heading = ({text}) => <h1 className='text-3xl mt-6 mb-2'>{text}</h1>
+const Heading = ({text}) => <h1 className='text-2xl md:text-3xl mt-8 mb-4'>{text}</h1>
 
 const Disclaimer = () => {
     return (
         <>
-            <div className='max-w-8xl mx-auto'>
-                <h1 className='text-center text-5xl py-12'>Disclaimer</h1>
+            <div className='max-w-8xl mx-auto px-6'>
+                <h1 className='text-center text-3xl md:text-5xl py-8 md:py-12'>Disclaimer</h1>
 
-                <h1 className='text-4xl mb-6'>Disclaimer for BM Packing Machines</h1>
+                <h1 className='text-2xl md:text-4xl mb-6'>Disclaimer for BM Packing Machines</h1>
                 <p className='legal-paragraph'>If you require any more information or have any questions about our site’s disclaimer, please feel free to contact us by email at info@bmpackingmachines.com</p>
                 
                 <Heading text="Disclaimers for BM Packing Machines" />
