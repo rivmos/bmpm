@@ -4,7 +4,26 @@
 @tailwind utilities;
 
 @layer components {
-    .legal-paragraph {
-      @apply mb-4;
-    }
+  .legal-paragraph {
+    @apply mb-4;
   }
+}
+
+
+.transitionDiv {
+  animation: "errorAnimatin 270ms ease-in-out",
+}
+
+@keyframes errorAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

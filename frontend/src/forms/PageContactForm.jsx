@@ -8,8 +8,9 @@ function PageContactForm({ setOpenEnquirySuccess }) {
     const [successOpen, setSuccessOpen] = useState(false)
 
     const handleSubmit = () => {
+        console.log('hi')
         axios
-            .post('http://localhost:9999/api/contact', { ...form })
+            .post('http://localhost:9999/api/contact', { ...form, product:'General' })
             .then((res) => {
                 setSuccessOpen(true)
                 setForm({name: '', email: '', mobile: '', message: ''})
@@ -41,7 +42,7 @@ function PageContactForm({ setOpenEnquirySuccess }) {
                 <div className="flex justify-center">
                     <ButtonBorder
                         text="Send Message"
-                        onClick={() => { handleSubmit() }}
+                        onClick={handleSubmit}
                     />
                 </div>
             </div>

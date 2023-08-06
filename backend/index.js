@@ -1,11 +1,18 @@
 const express = require('express')
 const cors = require('cors')
+const mongoose = require('mongoose')
 
+if (process.argv.length < 3) {
+    console.log('give password as argument')
+    process.exit(1)
+}
+
+/* Instanciations */
 const app = express()
+const password = process.argv[2]
+const mongoUrl = `mongodb+srv://bmpm:${password}@bmpm.pwzfarv.mongodb.net/bmpm?retryWrites=true&w=majority`
 
-app.use(express.json())
-app.use(cors())
-
+/* Static Data */
 const products = [
     {
         id: 0,
@@ -187,30 +194,116 @@ const products = [
     },
 ]
 
-
 let enquiries = [
 ]
 
 let subscribers = []
 
+/* Middlewares */
+app.use(express.json())
+app.use(cors())
 
+
+/* Mongoose Connection */
+mongoose.connect(mongoUrl).then(() => console.log('connection successfull')).catch(() => console.log('connection failed'))
+const productSchema = new mongoose.Schema({
+    mainCategory: {
+        type: String,
+        required: true
+    },
+    subCategory: {
+        type: String,
+        required: true
+    },
+    productName: {
+        type: String,
+        required: true
+    },
+    brochureLink: {
+        type: String,
+        required: true
+    },
+    videoLink: {
+        type: String,
+        required: true
+    },
+    specifications: {
+        type: Object,
+        required: true,
+        properties: {
+            ProductionRate: { type: String },
+            ElectricalSupply: { type: String },
+            Power: { type: String },
+            Consumption: { type: String },
+            Dimension: { type: String },
+            Weight: { type: String }
+        }
+    },
+    features: {
+        type: [String],
+        required: true
+    }
+})
+
+const enquirySchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    mobile:{
+        type:Number,
+        required:true
+    },
+    message:{
+        type:String,
+        required:true
+    },
+    product:{
+        type:String,
+        required:true
+    },
+})
+
+const subscriberSchema = new mongoose.Schema({
+    email:{
+        type:String,
+        required:true
+    }
+})
+
+const Enquiry = new mongoose.model('Enquiry', enquirySchema)
+const Product = new mongoose.model('Product', productSchema)
+const Subscriber = new mongoose.model('Subscriber', subscriberSchema)
+
+
+/* API Routes */
+
+/* Root */
 app.get('/', (req, res) => {
     res.send('The Server Is Up & Running')
 })
 
-
+/* Get Products */
 app.get('/api/products', (req, res) => {
+    Pro
     res.json(products)
 })
 
+/* Get Enquiries */
 app.get('/api/enquiries', (req, res) => {
     res.json(enquiries)
 })
 
+/* Get Subscriptions */
 app.get('/api/subscribers', (req, res) => {
     res.json(subscribers)
 })
 
+/* Get Single Product */
 app.get('/api/products/:id', (req, res) => {
     const id = Number(req.params.id)
     const product = products.find(product => product.id === id)
@@ -224,6 +317,7 @@ app.get('/api/products/:id', (req, res) => {
     }
 })
 
+/* Get DropDown Data */
 app.get('/api/dropdowndata/', (req, res) => {
     const multilevelDropdownData = [];
 
@@ -247,7 +341,7 @@ app.get('/api/dropdowndata/', (req, res) => {
                     {
                         title: level[1],
                         children: [
-                            { id:level.at(-1),title: level[2] }
+                            { id: level.at(-1), title: level[2] }
                         ]
                     }
                 ]
@@ -256,20 +350,20 @@ app.get('/api/dropdowndata/', (req, res) => {
         }
         else {
             const subCategoryExists = mainCategoryExists.children.find(item => item.title === level[1])
-            if(!subCategoryExists){
+            if (!subCategoryExists) {
                 const node = {
                     title: level[1],
                     children: [
                         {
-                            id:level.at(-1),
+                            id: level.at(-1),
                             title: level[2],
                         }
                     ]
                 };
                 mainCategoryExists.children.push(node)
             }
-            else{
-                subCategoryExists.children.push({id:level.at(-1),title:level[2]})
+            else {
+                subCategoryExists.children.push({ id: level.at(-1), title: level[2] })
             }
         }
     }
@@ -278,18 +372,57 @@ app.get('/api/dropdowndata/', (req, res) => {
     res.end()
 })
 
+const validateEnquiry = (body) =>{
+    if(!body.name){
+        return 'Name'
+    }
+    else if(!body.email){
+        return 'Email'
+    }
+    else if(!body.mobile){
+        return 'Mobile'
+    }
+    else if(!body.product){
+        return 'Product'
+    }
+    else if(!body.message){
+        return 'Message'
+    }
+    else{
+        return ''
+    }
+}
+
+/* Post Enquiry */
 app.post('/api/contact', (req, res) => {
     const body = req.body;
-    enquiries = enquiries.concat(body)
-    res.json('Added Enquiry')
+    // enquiries = enquiries.concat(body)
+    const validationError = validateEnquiry(body)
+    if(validationError){
+        res.status(500).json({message:`${validationError} Required`})
+        return
+    }
+    const newEnquiry = new Enquiry(body)
+    newEnquiry.save()
+        .then((response) => { 
+            console.log('enquiry saved')
+            res.json(response)
+        })
+        .catch((err) => {
+            console.log('enquiry not saved')
+            console.log(err)
+            res.status(500).json(err)
+        })
 })
 
+/* Post Subscription */
 app.post('/api/subscribe', (req, res) => {
     const email = req.body.email;
     subscribers = subscribers.concat(email)
     res.json('Added Subscriber')
 })
 
+/* PORT Assignment */
 const PORT = 9999;
 
 app.listen(PORT, () => {
