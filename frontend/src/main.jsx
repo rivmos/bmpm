@@ -17,6 +17,7 @@ import ProductPage from './pages/ProductPage.jsx';
 import Products from './pages/Products.jsx';
 import Privacy from './pages/Legal/Privacy.jsx';
 import Disclaimer from './pages/Legal/Disclaimer.jsx';
+import Login from './pages/Admin/Login.jsx'
 
 const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ const router = createBrowserRouter([
       {
         path:'/disclaimer',
         element: <Disclaimer/>
+      },
+      {
+        path:'/admin',
+        element: <Login/>
       },
     ]
   }

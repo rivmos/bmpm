@@ -26,7 +26,7 @@ const ProductInfo = ({ productInfo }) => {
   return (
     <>
       <EnquiryForm isOpen={formOpen} setIsOpen={setFormOpen} productInfo={productInfo} setOpenEnquirySuccess={setOpenEnquirySuccess} />
-      <EnquiryAdded isOpen={openEnquirySuccess} setIsOpen={setOpenEnquirySuccess} message="Success" />
+      <EnquiryAdded isOpen={openEnquirySuccess} setIsOpen={setOpenEnquirySuccess} message="Enquiry Added Successfully!" />
       <div className='max-w-8xl mx-auto px-6'>
         <div className='flex justify-center py-12 text-sm md:text-base'>Products / {productInfo.mainCategory} {productInfo.subCategory && ` / ${productInfo.subCategory}`} / {productInfo?.productName}</div>
         {/* Display */}
