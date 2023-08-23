@@ -85,7 +85,7 @@ function MyDropdown() {
                                                         return (
                                                             (
                                                                 <Link to={`/ourproducts/${item.id}`}>
-                                                                    <MenuItem key={item.title} onClick={() => showProduct(item.id)}>
+                                                                    <MenuItem key={item.title} onClick={() => showProduct(Number(item.id))}>
                                                                         {item.title}
                                                                     </MenuItem>
                                                                 </Link>
