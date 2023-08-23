@@ -18,6 +18,7 @@ import Products from './pages/Products.jsx';
 import Privacy from './pages/Legal/Privacy.jsx';
 import Disclaimer from './pages/Legal/Disclaimer.jsx';
 import Login from './pages/Admin/Login.jsx'
+import productServices from './services/productServices';
 
 const router = createBrowserRouter([
   {
@@ -69,9 +70,12 @@ const router = createBrowserRouter([
         element: <ProductPage/>,
         loader:async ({params}) => {
           // loaders can be async functions
+          // productServices.getProduct(params.id).then(product => product)
           const res = await axios.get(`http://localhost:9999/api/products/${params.id}`);
           const products = await res.data;
           return products;
+          // http://127.0.0.1:5173/ourproducts/64e64520791723749ed877d2
+          // http://127.0.0.1:5173/ourproducts/64e64520791723749ed877d2
         },
       },
       {

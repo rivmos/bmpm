@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
+import productServices from '../services/productServices';
 import { useLocation } from 'react-router-dom';
 import '@szhsin/react-menu/dist/index.css';
 import { color, motion } from 'framer-motion';
@@ -14,10 +15,8 @@ function MyDropdown() {
     const [menuData, setMenuData] = useState([])
     const location = useLocation()
     useEffect(() => {
-        axios
-            .get('http://localhost:9999/api/dropdowndata')
-            .then(res => {
-                setMenuData(res.data)
+        productServices.getDropDownData().then(dropDownData => {
+                setMenuData(dropDownData)
             })
     }, [])
     const showCategory = (categoryName) => {
