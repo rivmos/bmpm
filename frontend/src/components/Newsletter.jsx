@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import EnquiryAdded from './EnquiryAdded'
+import subscriberServices from '../services/subscriberServices'
 
 const Newsletter = () => {
     const [form, setForm] = useState({ email: '' })
     const [openNewsletterSuccess, setNewsLetterSuccess] = useState(false)
 
     const handleSubscribe = () => {
-        axios
-            .post('http://localhost:9999/api/subscribers/new', form)
+        subscriberServices.addNewSubscriber(form.email)
             .then(() => {
                 setNewsLetterSuccess(true)
                 setForm({ email: '' })

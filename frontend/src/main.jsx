@@ -71,8 +71,8 @@ const router = createBrowserRouter([
         loader:async ({params}) => {
           // loaders can be async functions
           // productServices.getProduct(params.id).then(product => product)
-          const res = await axios.get(`http://localhost:9999/api/products/${params.id}`);
-          const products = await res.data;
+          const res = await productServices.getProduct(params.id)
+          const products = await res;
           return products;
           // http://127.0.0.1:5173/ourproducts/64e64520791723749ed877d2
           // http://127.0.0.1:5173/ourproducts/64e64520791723749ed877d2

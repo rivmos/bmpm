@@ -1,3 +1,4 @@
+const logger = require('../utils/logger')
 const subscriberRouter = require('express').Router()
 const Subscriber = require('../models/subscriber')
 

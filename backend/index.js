@@ -18,6 +18,7 @@ const logger = require('./utils/logger')
 const productRouter = require('./controllers/product')
 const subscriberRouter = require('./controllers/subscriber')
 const enquiryRouter = require('./controllers/enquiry')
+const usersRouter = require('./controllers/users')
 
 /* Middlewares Imports*/
 const {unknownEndpoint, requestLogger} = require('./utils/middleware')
@@ -30,6 +31,7 @@ app.use(requestLogger)
 app.use('/api/products', productRouter)
 app.use('/api/subscribers', subscriberRouter)
 app.use('/api/enquiries', enquiryRouter)
+app.use('/api/auth', usersRouter)
 
 /* Static Data */
 // const products = [

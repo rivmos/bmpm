@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import EnquiryAdded from '../components/EnquiryAdded'
 import ButtonBorder from '../components/ButtonBorder'
+import enquiryServices from '../services/enquiryServices'
 
 function PageContactForm() {
     const [form, setForm] = useState({ name: '', email: '', mobile: '', message: '' })
@@ -36,8 +37,7 @@ function PageContactForm() {
         },2000)
       }
       else{
-        axios
-          .post('http://localhost:9999/api/enquiries/new', {...form, product:'General'})
+        enquiryServices.addNewEnquiry({...form, product:'General'})
           .then((res) => {
             setOpenEnquirySuccess(true)
             setForm({name: '', email: '', mobile: '', message: ''})
