@@ -1,3 +1,15 @@
+/* Model Imports */
+const Product = require('./models/product')
+const Enquiry = require('./models/enquiry')
+const Subscriber = require('./models/subscriber')
+
+/* Config Imports */
+const config = require('./utils/config')
+const logger = require('./utils/logger')
+
+/* Config Imports */
+const productRouter = require('./controllers/product')
+
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
@@ -5,7 +17,6 @@ require('dotenv').config()
 
 /* Instanciations */
 const app = express()
-const mongoUrl = process.env.MONGO_URI
 
 /* Static Data */
 // const products = [
@@ -192,106 +203,17 @@ const mongoUrl = process.env.MONGO_URI
 
 // let enquiries = [
 // ]
-
-let subscribers = []
+ 
+// let subscribers = [] 
 
 /* Middlewares */
+app.use('/api/products', productRouter)
 app.use(express.json())
 app.use(cors())
 
 
 /* Mongoose Connection */
-mongoose.connect(mongoUrl).then(() => console.log('connection successfull')).catch(() => console.log('connection failed'))
-const productSchema = new mongoose.Schema({
-    mainCategory: {
-        type: String,
-        required: true
-    },
-    subCategory: {
-        type: String,
-        required: true
-    },
-    productName: {
-        type: String,
-        required: true
-    },
-    brochureLink: {
-        type: String,
-        required: true
-    },
-    videoLink: {
-        type: String,
-        required: true
-    },
-    specifications: {
-        type: Object,
-        required: true,
-        properties: {
-            ProductionRate: { type: String },
-            ElectricalSupply: { type: String },
-            Power: { type: String },
-            Consumption: { type: String },
-            Dimension: { type: String },
-            Weight: { type: String }
-        }
-    },
-    features: {
-        type: [String],
-        required: true
-    }
-})
-
-productSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id.toString()
-        delete returnedObject._id
-        delete returnedObject.__v
-    }
-})
-
-const enquirySchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
-    mobile: {
-        type: Number,
-        required: true
-    },
-    message: {
-        type: String,
-        required: true
-    },
-    product: {
-        type: String,
-        required: true
-    },
-})
-
-enquirySchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id.toString()
-        delete returnedObject._id
-        delete returnedObject.__v
-    }
-})
-
-const subscriberSchema = new mongoose.Schema({
-    email: {
-        type: [String],
-        required: true
-    }
-})
-
-
-
-const Enquiry = new mongoose.model('Enquiry', enquirySchema)
-const Product = new mongoose.model('Product', productSchema)
-const Subscriber = new mongoose.model('Subscriber', subscriberSchema)
+mongoose.connect(config.MONGO_URI).then(() => logger.info('connection successfull')).catch(() => logger.info('connection failed'))
 
 
 /* API Routes */
@@ -299,13 +221,6 @@ const Subscriber = new mongoose.model('Subscriber', subscriberSchema)
 /* Root */
 app.get('/', (req, res) => {
     res.send('BMPM Server')
-})
-
-/* Get Products */
-app.get('/api/products', (req, res) => {
-    Product.find({}).then((products)=>{
-        res.json(products)
-    }).catch(error => res.json(error))
 })
 
 /* Get Enquiries */
@@ -322,17 +237,6 @@ app.get('/api/subscribers', (req, res) => {
     }).catch(error => res.json(error))
 })
 
-/* Get Single Product */
-app.get('/api/products/:id', (req, res) => {
-    const id = req.params.id
-    Product.findById(id).then(product => {
-        res.json(product)
-    }).catch(error => {
-        res.json({
-            message: `The Product Doesn't Exist`
-        })
-    })
-})
 
 /* Get DropDown Data */
 app.get('/api/dropdowndata/', (req, res) => {
@@ -388,7 +292,7 @@ app.get('/api/dropdowndata/', (req, res) => {
     
         res.json(multilevelJson);
         res.end()
-    }).catch(error => console.log(error))
+    }).catch(error => logger.info(error))
 })
 
 const validateEnquiry = (body) => {
@@ -424,12 +328,12 @@ app.post('/api/contact', (req, res) => {
     const newEnquiry = new Enquiry(body)
     newEnquiry.save()
         .then((response) => {
-            console.log('enquiry saved')
+            logger.info('enquiry saved')
             res.json(response)
         })
         .catch((err) => {
-            console.log('enquiry not saved')
-            console.log(err)
+            logger.info('enquiry not saved')
+            logger.info(err)
             res.status(500).json(err)
         })
 })
@@ -440,19 +344,16 @@ app.post('/api/subscribe', (req, res) => {
     const newSubscriber = new Subscriber(email)
     newSubscriber.save()
         .then((response) => {
-            console.log('Subscriber Added')
+            logger.info('Subscriber Added')
             res.json(response)
         })
         .catch((err) => {
-            console.log('Subscriber Not Saved')
-            console.log(err)
+            logger.info('Subscriber Not Saved')
+            logger.info(err)
             res.status(500).json(err)
         })
 })
 
-/* PORT Assignment */
-const PORT = 9999;
-
-app.listen(PORT, () => {
-    console.log(`The Server Is Running On Port : ${PORT}`)
+app.listen(9999, () => {
+    logger.info(`The Server Is Running On Port : ${config.PORT}`)
 })
