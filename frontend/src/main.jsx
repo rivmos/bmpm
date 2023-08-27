@@ -29,12 +29,12 @@ const router = createBrowserRouter([
       {
         path:'/',
         element: <Home/>,
-        loader:async () => {
-          // loaders can be async functions
-          const res = await axios.get("http://localhost:9999/api/dropdowndata");
-          const products = await res.data;
-          return products;
-        },
+        // loader:async () => {
+        //   // loaders can be async functions
+        //   const res = await axios.get("http://localhost:9999/api/dropdowndata");
+        //   const products = await res.data;
+        //   return products;
+        // },
       },
       {
         path:'/aboutus',
