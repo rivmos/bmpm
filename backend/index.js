@@ -259,7 +259,7 @@ app.get('/api/dropdowndata/', (req, res) => {
                         {
                             title: level[1],
                             children: [
-                                { id: level.at(-1), title: level[2] }
+                                { id: level.slice(-1)[0], title: level[2] }
                             ]
                         }
                     ]
@@ -273,7 +273,7 @@ app.get('/api/dropdowndata/', (req, res) => {
                         title: level[1],
                         children: [
                             {
-                                id: level.at(-1),
+                                id: level.slice(-1)[0],
                                 title: level[2],
                             }
                         ]
@@ -281,7 +281,7 @@ app.get('/api/dropdowndata/', (req, res) => {
                     mainCategoryExists.children.push(node)
                 }
                 else {
-                    subCategoryExists.children.push({ id: level.at(-1), title: level[2] })
+                    subCategoryExists.children.push({ id: level.slice(-1)[0], title: level[2] })
                 }
             }
         }
