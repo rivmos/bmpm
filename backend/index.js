@@ -30,7 +30,6 @@ app.use(requestLogger)
 app.use('/api/products', productRouter)
 app.use('/api/subscribers', subscriberRouter)
 app.use('/api/enquiries', enquiryRouter)
-app.use(unknownEndpoint)
 
 /* Static Data */
 // const products = [
@@ -289,6 +288,9 @@ app.get('/api/dropdowndata/', (req, res) => {
         res.end()
     }).catch(error => logger.info(error))
 })
+
+/* Unknown EndPoint Route */
+app.use(unknownEndpoint)
 
 
 app.listen(9999, () => {
