@@ -1,22 +1,36 @@
-/* Model Imports */
-const Product = require('./models/product')
-const Enquiry = require('./models/enquiry')
-const Subscriber = require('./models/subscriber')
-
-/* Config Imports */
-const config = require('./utils/config')
-const logger = require('./utils/logger')
-
-/* Config Imports */
-const productRouter = require('./controllers/product')
-
+/* Instanciations */
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
-/* Instanciations */
+/* Express Application Instance */
 const app = express()
+
+/* Model Imports */
+const Product = require('./models/product')
+
+/* Config Imports */
+const config = require('./utils/config')
+const logger = require('./utils/logger')
+
+/* Router Imports */
+const productRouter = require('./controllers/product')
+const subscriberRouter = require('./controllers/subscriber')
+const enquiryRouter = require('./controllers/enquiry')
+
+/* Middlewares Imports*/
+const {unknownEndpoint, requestLogger} = require('./utils/middleware')
+
+
+/* Middlewares Usage*/
+app.use(cors())
+app.use(express.json())
+app.use(requestLogger)
+app.use('/api/products', productRouter)
+app.use('/api/subscribers', subscriberRouter)
+app.use('/api/enquiries', enquiryRouter)
+app.use(unknownEndpoint)
 
 /* Static Data */
 // const products = [
@@ -206,11 +220,6 @@ const app = express()
  
 // let subscribers = [] 
 
-/* Middlewares */
-app.use('/api/products', productRouter)
-app.use(express.json())
-app.use(cors())
-
 
 /* Mongoose Connection */
 mongoose.connect(config.MONGO_URI).then(() => logger.info('connection successfull')).catch(() => logger.info('connection failed'))
@@ -221,20 +230,6 @@ mongoose.connect(config.MONGO_URI).then(() => logger.info('connection successful
 /* Root */
 app.get('/', (req, res) => {
     res.send('BMPM Server')
-})
-
-/* Get Enquiries */
-app.get('/api/enquiries', (req, res) => {
-    Enquiry.find({}).then((products)=>{
-        res.json(products)
-    }).catch(error => res.json(error))
-})
-
-/* Get Subscriptions */
-app.get('/api/subscribers', (req, res) => {
-    Subscriber.find({}).then((products)=>{
-        res.json(products)
-    }).catch(error => res.json(error))
 })
 
 
@@ -295,64 +290,6 @@ app.get('/api/dropdowndata/', (req, res) => {
     }).catch(error => logger.info(error))
 })
 
-const validateEnquiry = (body) => {
-    if (!body.name) {
-        return 'Name'
-    }
-    else if (!body.email) {
-        return 'Email'
-    }
-    else if (!body.mobile) {
-        return 'Mobile'
-    }
-    else if (!body.product) {
-        return 'Product'
-    }
-    else if (!body.message) {
-        return 'Message'
-    }
-    else {
-        return ''
-    }
-}
-
-/* Post Enquiry */
-app.post('/api/contact', (req, res) => {
-    const body = req.body;
-    // enquiries = enquiries.concat(body)
-    const validationError = validateEnquiry(body)
-    if (validationError) {
-        res.status(500).json({ message: `${validationError} Required` })
-        return
-    }
-    const newEnquiry = new Enquiry(body)
-    newEnquiry.save()
-        .then((response) => {
-            logger.info('enquiry saved')
-            res.json(response)
-        })
-        .catch((err) => {
-            logger.info('enquiry not saved')
-            logger.info(err)
-            res.status(500).json(err)
-        })
-})
-
-/* Post Subscription */
-app.post('/api/subscribe', (req, res) => {
-    const email = req.body.email;
-    const newSubscriber = new Subscriber(email)
-    newSubscriber.save()
-        .then((response) => {
-            logger.info('Subscriber Added')
-            res.json(response)
-        })
-        .catch((err) => {
-            logger.info('Subscriber Not Saved')
-            logger.info(err)
-            res.status(500).json(err)
-        })
-})
 
 app.listen(9999, () => {
     logger.info(`The Server Is Running On Port : ${config.PORT}`)

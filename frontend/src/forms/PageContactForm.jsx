@@ -37,7 +37,7 @@ function PageContactForm() {
       }
       else{
         axios
-          .post('http://localhost:9999/api/contact', {...form, product:'General'})
+          .post('http://localhost:9999/api/enquiries/new', {...form, product:'General'})
           .then((res) => {
             setOpenEnquirySuccess(true)
             setForm({name: '', email: '', mobile: '', message: ''})

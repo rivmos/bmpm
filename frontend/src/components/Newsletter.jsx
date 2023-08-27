@@ -8,7 +8,7 @@ const Newsletter = () => {
 
     const handleSubscribe = () => {
         axios
-            .post('http://localhost:9999/api/subscribe', form)
+            .post('http://localhost:9999/api/subscribers/new', form)
             .then(() => {
                 setNewsLetterSuccess(true)
                 setForm({ email: '' })

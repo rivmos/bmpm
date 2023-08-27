@@ -34,7 +34,7 @@ function EnquiryForm({ isOpen, setIsOpen, productInfo, setOpenEnquirySuccess}) {
       }
       else{
         axios
-          .post('http://localhost:9999/api/contact', {...form, product:productInfo.productName})
+          .post('http://localhost:9999/api/enquiries/new', {...form, product:productInfo.productName})
           .then((res) => {
             setOpenEnquirySuccess(true)
             setIsOpen(false);
