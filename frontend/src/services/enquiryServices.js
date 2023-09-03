@@ -6,4 +6,9 @@ const addNewEnquiry = async (newEnquiry) => {
     return res
 }
 
-export default {addNewEnquiry}
+const getEnquiries = async () => {
+    const request = axios.get(`${baseUrl}/enquiries/`)
+    return request.then(response => response.data)
+}
+
+export default {addNewEnquiry, getEnquiries}

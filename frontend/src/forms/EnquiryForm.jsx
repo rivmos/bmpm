@@ -92,7 +92,7 @@ function EnquiryForm({ isOpen, setIsOpen, productInfo, setOpenEnquirySuccess }) 
                       <input placeholder='Name' className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' value={form.name} onChange={(e) => { setForm({ ...form, name: e.target.value }) }} />
                       <input placeholder='Email' className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' value={form.email} onChange={(e) => { setForm({ ...form, email: e.target.value }) }} />
                       <input placeholder='Mobile' className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' value={form.mobile} onChange={(e) => { setForm({ ...form, mobile: e.target.value }) }} />
-                      <input value={productInfo.productName} className='border-[1px] border-inputBorder p-2 w-full rounded-md text-sm md:text-base' readOnly />
+                      <input value={productInfo?.productName} className='border-[1px] border-inputBorder p-2 w-full rounded-md text-sm md:text-base' readOnly />
                       <textarea rows={5} className='border-[1px] border-inputBorder p-2 w-full rounded-md placeholder:text-sm md:placeholder:text-base' placeholder='Message' value={form.message} onChange={(e) => { setForm({ ...form, message: e.target.value }) }}></textarea>
                     </form>
                   </div>

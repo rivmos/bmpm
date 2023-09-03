@@ -27,7 +27,7 @@ const {unknownEndpoint, requestLogger} = require('./utils/middleware')
 /* Middlewares Usage*/
 app.use(cors())
 app.use(express.json())
-app.use(requestLogger)
+// app.use(requestLogger)
 app.use('/api/products', productRouter)
 app.use('/api/subscribers', subscriberRouter)
 app.use('/api/enquiries', enquiryRouter)

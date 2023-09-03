@@ -28,17 +28,17 @@ const ProductInfo = ({ productInfo }) => {
       <EnquiryForm isOpen={formOpen} setIsOpen={setFormOpen} productInfo={productInfo} setOpenEnquirySuccess={setOpenEnquirySuccess} />
       <EnquiryAdded isOpen={openEnquirySuccess} setIsOpen={setOpenEnquirySuccess} message="Enquiry Added Successfully!" />
       <div className='max-w-8xl mx-auto px-6'>
-        <div className='flex justify-center py-12 text-sm md:text-base'>Products / {productInfo.mainCategory} {productInfo.subCategory && ` / ${productInfo.subCategory}`} / {productInfo?.productName}</div>
+        <div className='flex justify-center py-12 text-sm md:text-base'>Products / {productInfo?.mainCategory} {productInfo?.subCategory && ` / ${productInfo?.subCategory}`} / {productInfo?.productName}</div>
         {/* Display */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
           {/* Display Image*/}
           <div>
-            <img src={productInfo.imageLink} />
+            <img src={productInfo?.imageLink} />
           </div>
           {/* Display Buttons*/}
           <div className='flex flex-col justify-between gap-4 bg-lightGrey border-[1px] p-8 md:p-16 rounded-md'>
             <div className='text-3xl md:text-4xl'>
-              <span>{productInfo.productName}</span>
+              <span>{productInfo?.productName}</span>
             </div>
             <div className='flex flex-col gap-4'>
               <div>
@@ -48,11 +48,11 @@ const ProductInfo = ({ productInfo }) => {
                 </div>
               </div>
               <div className='flex flex-col md:flex-row gap-4 justify-center'>
-                <a href={productInfo.brochureLink} target='_blank' className='text-lightBrown border-[2px] border-lightBrown p-2 cursor-pointer flex justify-center w-full items-center gap-1 text-sm md:text-base'>
+                <a href={productInfo?.brochureLink} target='_blank' className='text-lightBrown border-[2px] border-lightBrown p-2 cursor-pointer flex justify-center w-full items-center gap-1 text-sm md:text-base'>
                   <i class="fa-solid fa-file-pdf text-lightBrown"></i>
                   <span>Brochure</span>
                 </a>
-                <a href={productInfo.videoLink} target='_blank' className='text-lightBrown border-[2px] border-lightBrown p-2 cursor-pointer flex justify-center w-full items-center gap-1 text-sm md:text-base'>
+                <a href={productInfo?.videoLink} target='_blank' className='text-lightBrown border-[2px] border-lightBrown p-2 cursor-pointer flex justify-center w-full items-center gap-1 text-sm md:text-base'>
                   <i class="fa-brands fa-youtube text-lightBrown"></i>
                   <span>Video</span>
                 </a>

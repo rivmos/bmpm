@@ -6,7 +6,7 @@ const Footer = () => {
         <div className='bg-darkGrey text-white'>
             <div className='max-w-8xl flex flex-col mx-auto py-12 md:py-16 gap-4'>
                 {/* Sections */}
-                <div className='grid grid-cols-2 md:grid-cols-4 gap-8 px-6'>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-8'>
                     <div className='flex flex-col gap-4 col-span-2'>
                         {/* Headline */}
                         <div className='text-2xl font-semibold'>Our Products</div>

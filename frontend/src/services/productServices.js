@@ -11,5 +11,9 @@ const getProduct = async (id) => {
     return request.then(response => response.data)
 }
 
+const addNewProduct = async (newProduct) => {
+    const request = axios.post(`${baseUrl}/products/new`,newProduct)
+    return request.then(response => response.data)
+}
 
-export default {getDropDownData, getProduct}
+export default {getDropDownData, getProduct, addNewProduct}

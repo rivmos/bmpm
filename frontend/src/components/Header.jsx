@@ -83,8 +83,8 @@ function MyDropdown() {
                                                     item.children && item.children.map(item => {
                                                         return (
                                                             (
-                                                                <Link to={`/ourproducts/${item.id}`}>
-                                                                    <MenuItem key={item.title}>
+                                                                <Link key={item.title} to={`/ourproducts/${item.id}`}>
+                                                                    <MenuItem >
                                                                         {item.title}
                                                                     </MenuItem>
                                                                 </Link>

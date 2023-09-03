@@ -6,4 +6,9 @@ const addNewSubscriber = async (newSubscriber) => {
     return res
 }
 
-export default {addNewSubscriber}
+const getSubscribers = async () => {
+    const request = axios.get(`${baseUrl}/subscribers/`)
+    return request.then(response => response.data)
+}
+
+export default {addNewSubscriber, getSubscribers}
