@@ -136,6 +136,7 @@ return (
                     <li><Link to='/contactus' className='hover:text-primaryBrown' style={{ color: location.pathname === '/contactus' && '#914a0e' }}>Contact Us</Link></li>
                     {isLoggedIn && <li><Link to='/admin/console' className='hover:text-primaryBrown' style={{ color: location.pathname === '/admin/console' && '#914a0e' }}>Console</Link></li>}
                     {isLoggedIn && <li onClick={handleSignOut} className='hover:text-primaryBrown cursor-pointer'>Logout</li>}
+                    {!isLoggedIn && <li><Link to='/login' className='hover:text-primaryBrown' style={{ color: location.pathname === '/login' && '#914a0e' }}>Admin</Link></li>}
                 </ul>
             </div>
         </div>
