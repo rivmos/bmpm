@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosClient } from "./axiosClient";
 const baseUrl = import.meta.env.VITE_APP_BMPM_API
 
 const getDropDownData = async () => {
@@ -12,8 +13,18 @@ const getProduct = async (id) => {
 }
 
 const addNewProduct = async (newProduct) => {
-    const request = axios.post(`${baseUrl}/products/new`,newProduct)
+    const request = axiosClient.post(`/products/new`,newProduct)
     return request.then(response => response.data)
 }
 
-export default {getDropDownData, getProduct, addNewProduct}
+const getMainCategories = async () => {
+    const request = axios.get(`${baseUrl}/maincategories`)
+    return request.then(response => response.data)
+}
+
+const getSubCategories = async () => {
+    const request = axios.get(`${baseUrl}/subcategories`)
+    return request.then(response => response.data)
+}
+
+export default {getDropDownData, getProduct, addNewProduct, getMainCategories, getSubCategories}

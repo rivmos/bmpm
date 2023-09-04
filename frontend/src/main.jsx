@@ -22,6 +22,7 @@ import Login from './pages/Admin/Login.jsx'
 import productServices from './services/productServices';
 import AddProduct from './pages/Admin/AddProduct';
 import Protected from './pages/Protected';
+import { AuthProvider } from './context/authContext';
 
 let isLoggedIn = false
 
@@ -106,10 +107,12 @@ let isLoggedIn = false
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <RouterProvider router={router} /> */}
+    <AuthProvider>
     <BrowserRouter>
       <Routes>
         <Route path='/*' element={<App/>} />
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>,
 )

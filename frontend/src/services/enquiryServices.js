@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosClient } from "./axiosClient";
 const baseUrl = import.meta.env.VITE_APP_BMPM_API
 
 const addNewEnquiry = async (newEnquiry) => {
@@ -7,8 +8,12 @@ const addNewEnquiry = async (newEnquiry) => {
 }
 
 const getEnquiries = async () => {
-    const request = axios.get(`${baseUrl}/enquiries/`)
+    const request = axiosClient.get(`/enquiries/`)
     return request.then(response => response.data)
 }
 
-export default {addNewEnquiry, getEnquiries}
+const deleteEnquiry = async (id) => {
+    const res = await axiosClient.delete(`${baseUrl}/enquiries/${id}`)
+    return res
+}
+export default {addNewEnquiry, getEnquiries, deleteEnquiry}

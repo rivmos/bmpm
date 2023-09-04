@@ -12,19 +12,17 @@ import Privacy from './pages/Legal/Privacy.jsx';
 import Disclaimer from './pages/Legal/Disclaimer.jsx';
 import Login from './pages/Admin/Login.jsx'
 import Protected from './pages/Protected';
-import AddProduct from './pages/Admin/AddProduct';
-import productServices from './services/productServices';
 import Layout from "./pages/Layout";
-import { Outlet, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import { useEffect } from "react";
-import EnquiryList from "./pages/Admin/EnquiryList";
-import SubscribersList from "./pages/Admin/SubscribersList";
+import AdminConsole from "./pages/Admin/AdminConsole";
+import { useAuth } from "./context/authContext";
 
 function App() {
   const { pathname } = useLocation();
 
-  const isLoggedIn = false
+  const {user} = useAuth()
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +32,7 @@ function App() {
   return (
     <>
       <div>
-        <Header />
+        <Header isLoggedIn={user}/>
         <div className="mt-32">
           <Routes>
             <Route path="/" element={<Layout />}>
@@ -51,16 +49,15 @@ function App() {
               <Route path="*" element={<Error />}/>
 
               {/* Private Routes */}
-              <Route path="/admin" element={<Protected isLoggedIn={isLoggedIn}/>}>
-                <Route path="/admin/addproduct" element={<AddProduct />} />
-                <Route path="/admin/enquiries" element={<EnquiryList />} />
-                <Route path="/admin/subscribers" element={<SubscribersList />} />
+              <Route path="/admin" element={<Protected isLoggedIn={user}/>}>
+                <Route path="/admin/console" element={<AdminConsole />} />
+                {/* <Route path="/admin/enquiries" element={<EnquiryList />} />
+                <Route path="/admin/subscribers" element={<SubscribersList />} /> */}
               </Route>
               
               {/* CatchAll Routes */}
             </Route>
           </Routes>
-          {/* <Outlet /> */}
         </div>
         <Footer />
       </div>

@@ -1,9 +1,14 @@
 import { useState } from "react"
 import authServices from "../../services/authServices"
+import { useNavigate } from "react-router-dom"
+import { useAuth } from "../../context/authContext"
+
 
 const Login = () => {
-
+  const navigate = useNavigate()
   const [form, setForm] = useState({ username: '', password: '' })
+
+  const {setUser} = useAuth()
 
   const handleSignIn = async (e) => {
     e.preventDefault()
@@ -11,6 +16,8 @@ const Login = () => {
       .then((res) => {
         setForm({username:'',password:''})
         sessionStorage.setItem('token', res.token)
+        navigate('/admin/console')
+        setUser(res)
       })
       .catch(error => {
         console.log(error)

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import productServices from '../../services/productServices'
+import EnquirySuccess from '../../components/EnquiryAdded'
 
 const AddProduct = () => {
     const [form, setForm] = useState({
@@ -18,8 +19,12 @@ const AddProduct = () => {
         },
         features: [],
     })
-
     const [featureInput, setFeatureInput] = useState('')
+    const [isOpen, setIsOpen] = useState(false)
+
+    const [mainCategories, setMainCategories] = useState([])
+    const [subCategories, setSubCategories] = useState([])
+
 
     const handleSpecificationChange = (specName, value) => {
         setForm(prevForm => ({
@@ -43,7 +48,7 @@ const AddProduct = () => {
     const handleRemoveFeature = (index) => {
         setForm(prevForm => ({
             ...prevForm,
-            features: prevForm.features.filter((item, filterIndex) => filterIndex !== index )
+            features: prevForm.features.filter((item, filterIndex) => filterIndex !== index)
         }))
 
     }
@@ -51,13 +56,23 @@ const AddProduct = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(form)
-        productServices.addNewProduct(form)
+        productServices.addNewProduct(form).then(() => {
+            setIsOpen(true)
+        })
     }
+
+    
+
+    useEffect(() => {
+        productServices.getMainCategories().then(data => setMainCategories(data))
+        productServices.getSubCategories().then(data => setSubCategories(data))
+    }, [])
 
     return (
         <form className='max-w-8xl mx-auto py-4'>
+            <EnquirySuccess isOpen={isOpen} setIsOpen={setIsOpen} message="Product Saved Successfully"/>
             <div className="space-y-12">
-                
+
                 <div className="border-b border-gray-900/10 pb-12">
                     <h2 className="text-lg font-semibold leading-7 text-primaryBrown">Add Product</h2>
                     <p className="mt-1 text-sm leading-6 text-gray-600">
@@ -95,9 +110,9 @@ const AddProduct = () => {
                                     onChange={(e) => { setForm({ ...form, mainCategory: e.target.value }) }}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 >
-                                    <option>United States</option>
-                                    <option>Canada</option>
-                                    <option>Mexico</option>
+                                    {
+                                        mainCategories?.map((mc, index) => <option key={index}>{mc}</option>)
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -115,9 +130,9 @@ const AddProduct = () => {
                                     onChange={(e) => { setForm({ ...form, subCategory: e.target.value }) }}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 >
-                                    <option>United States</option>
-                                    <option>Canada</option>
-                                    <option>Mexico</option>
+                                    {
+                                        subCategories?.map((sc, index) => <option key={index}>{sc}</option>)
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -280,7 +295,7 @@ const AddProduct = () => {
                     <ul>
                         {
                             form.features.map((feature, index) => {
-                                return(
+                                return (
                                     <div key={feature} className='flex gap-2'>
                                         <li>{feature}</li>
                                         <span onClick={() => handleRemoveFeature(index)}><i class="fa-solid fa-trash text-sm cursor-pointer text-gray-400"></i></span>

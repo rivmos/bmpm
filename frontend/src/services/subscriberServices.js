@@ -1,4 +1,5 @@
 import axios from "axios";
+import { axiosClient } from "./axiosClient";
 const baseUrl = import.meta.env.VITE_APP_BMPM_API
 
 const addNewSubscriber = async (newSubscriber) => {
@@ -7,7 +8,7 @@ const addNewSubscriber = async (newSubscriber) => {
 }
 
 const getSubscribers = async () => {
-    const request = axios.get(`${baseUrl}/subscribers/`)
+    const request = axiosClient.get(`/subscribers/`)
     return request.then(response => response.data)
 }
 

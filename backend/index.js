@@ -21,7 +21,7 @@ const enquiryRouter = require('./controllers/enquiry')
 const usersRouter = require('./controllers/users')
 
 /* Middlewares Imports*/
-const {unknownEndpoint, requestLogger} = require('./utils/middleware')
+const { unknownEndpoint, requestLogger } = require('./utils/middleware')
 
 
 /* Middlewares Usage*/
@@ -218,7 +218,7 @@ app.use('/api/auth', usersRouter)
 
 // let enquiries = [
 // ]
- 
+
 // let subscribers = [] 
 
 
@@ -244,12 +244,12 @@ app.get('/api/dropdowndata/', (req, res) => {
             const subCategory = product.subCategory;
             const productName = product.productName;
             const productId = product.id
-    
+
             multilevelDropdownData.push([mainCategory, subCategory, productName, productId]);
         }
-    
+
         const multilevelJson = [];
-    
+
         for (const level of multilevelDropdownData) {
             const mainCategoryExists = multilevelJson.find(item => item.title === level[0])
             if (!mainCategoryExists) {
@@ -285,8 +285,44 @@ app.get('/api/dropdowndata/', (req, res) => {
                 }
             }
         }
-    
+
         res.json(multilevelJson);
+        res.end()
+    }).catch(error => logger.info(error))
+})
+
+app.get('/api/maincategories/', (req, res) => {
+    const mainCategories = [];
+
+    Product.find({}).then((products) => {
+
+        for (const product of products) {
+            const mainCategory = product.mainCategory;
+            const mainCategoriesExists = mainCategories.find(item => item === mainCategory)
+            if (!mainCategoriesExists) {
+                mainCategories.push(mainCategory);
+            }
+        }
+
+        res.json(mainCategories);
+        res.end()
+    }).catch(error => logger.info(error))
+})
+
+app.get('/api/subcategories/', (req, res) => {
+    const subCategories = [];
+
+    Product.find({}).then((products) => {
+
+        for (const product of products) {
+            const subCategory = product.subCategory;
+            const subCategoryExists = subCategories.find(item => item === subCategory)
+            if (!subCategoryExists) {
+                subCategories.push(subCategory);
+            }
+        }
+
+        res.json(subCategories);
         res.end()
     }).catch(error => logger.info(error))
 })

@@ -1,9 +1,15 @@
 const logger = require('../utils/logger')
 const enquiryRouter = require('express').Router()
 const Enquiry = require('../models/enquiry')
+const getTokenFrom = require('../utils/auth').getTokenFrom
+const jwt = require('jsonwebtoken')
 
 /* Get Enquiries */
 enquiryRouter.get('/', (req, res) => {
+    const decodedToken = jwt.verify(getTokenFrom(req, res), process.env.SECRET)
+    if (!decodedToken.id) {
+        return response.status(401).json({ error: 'token invalid' })
+    }
     Enquiry.find({}).then((products)=>{
         res.json(products)
     }).catch(error => res.json(error))
@@ -52,5 +58,22 @@ enquiryRouter.post('/new', (req, res) => {
             res.status(500).json(err)
         })
 })
+
+/* Deleting Enquiry */
+enquiryRouter.delete('/:id', (req, res) => {
+    const decodedToken = jwt.verify(getTokenFrom(req, res), process.env.SECRET)
+    if (!decodedToken.id) {
+        return response.status(401).json({ error: 'token invalid' })
+    }
+    const id = req.params.id
+    Enquiry.findByIdAndDelete(id).then(enquiry => {
+        res.json(enquiry)
+    }).catch(error => {
+        res.json({
+            message: `Error While Deleting Enquiry`
+        })
+    })
+})
+
 
 module.exports = enquiryRouter 

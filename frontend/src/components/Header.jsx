@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Menu, MenuItem, MenuButton, SubMenu } from '@szhsin/react-menu';
 import productServices from '../services/productServices';
 import { useLocation } from 'react-router-dom';
 import '@szhsin/react-menu/dist/index.css';
 import { color, motion } from 'framer-motion';
+import { useAuth } from '../context/authContext';
 
 
 function MyDropdown() {
@@ -16,8 +17,8 @@ function MyDropdown() {
     const location = useLocation()
     useEffect(() => {
         productServices.getDropDownData().then(dropDownData => {
-                setMenuData(dropDownData)
-            })
+            setMenuData(dropDownData)
+        })
     }, [])
     const showCategory = (categoryName) => {
         setCategoryName(categoryName)
@@ -105,31 +106,41 @@ function MyDropdown() {
     )
 }
 
-const Header = () => {
-    return (
-        <div className='hidden sm:block fixed top-0 left-0 w-full bg-white z-50 shadow-md'>
-            <div className='flex items-center max-w-8xl mx-auto justify-between h-32'>
-                <div>
-                    <Link to="/">
-                        <motion.img animate={{ y: [-200, 0]}} transition={{ type: "spring" }} src='/logo.jpg' className='w-24 rounded-full' />
-                        {/* <img /> */}
-                    </Link>
-                </div>
-                <div>
-                    <ul className='flex gap-16 font-semibold'>
-                        <li><Link to='/' className='hover:text-primaryBrown' style={{color:location.pathname === '/' && '#914a0e'}}>Home</Link></li>
-                        <li><Link to='/aboutus' className='hover:text-primaryBrown' style={{color:location.pathname === '/aboutus' && '#914a0e'}}>About Us</Link></li>
-                        <li>
-                            <MyDropdown />
-                        </li>
-                        <li><Link to='/testimonials' className='hover:text-primaryBrown' style={{color:location.pathname === '/testimonials' && '#914a0e'}}>Testimonials</Link></li>
-                        <li><Link to='/clients' className='hover:text-primaryBrown' style={{color:location.pathname === '/clients' && '#914a0e'}}>Client List</Link></li>
-                        <li><Link to='/contactus' className='hover:text-primaryBrown' style={{color:location.pathname === '/contactus' && '#914a0e'}}>Contact Us</Link></li>
-                    </ul>
-                </div>
+const Header = ({ isLoggedIn }) => {
+    const navigate = useNavigate()
+    const { setUser } = useAuth()
+
+    const handleSignOut = () => {
+        sessionStorage.removeItem('token')
+        navigate('/')
+        setUser(null)
+}
+return (
+    <div className='hidden sm:block fixed top-0 left-0 w-full bg-white z-50 shadow-md'>
+        <div className='flex items-center max-w-8xl mx-auto justify-between h-32'>
+            <div>
+                <Link to="/">
+                    <motion.img animate={{ y: [-200, 0] }} transition={{ type: "spring" }} src='/logo.jpg' className='w-24 rounded-full' />
+                    {/* <img /> */}
+                </Link>
+            </div>
+            <div>
+                <ul className='flex gap-16 font-semibold'>
+                    <li><Link to='/' className='hover:text-primaryBrown' style={{ color: location.pathname === '/' && '#914a0e' }}>Home</Link></li>
+                    <li><Link to='/aboutus' className='hover:text-primaryBrown' style={{ color: location.pathname === '/aboutus' && '#914a0e' }}>About Us</Link></li>
+                    <li>
+                        <MyDropdown />
+                    </li>
+                    <li><Link to='/testimonials' className='hover:text-primaryBrown' style={{ color: location.pathname === '/testimonials' && '#914a0e' }}>Testimonials</Link></li>
+                    <li><Link to='/clients' className='hover:text-primaryBrown' style={{ color: location.pathname === '/clients' && '#914a0e' }}>Client List</Link></li>
+                    <li><Link to='/contactus' className='hover:text-primaryBrown' style={{ color: location.pathname === '/contactus' && '#914a0e' }}>Contact Us</Link></li>
+                    {isLoggedIn && <li><Link to='/admin/console' className='hover:text-primaryBrown' style={{ color: location.pathname === '/admin/console' && '#914a0e' }}>Console</Link></li>}
+                    {isLoggedIn && <li onClick={handleSignOut} className='hover:text-primaryBrown cursor-pointer'>Logout</li>}
+                </ul>
             </div>
         </div>
-    )
+    </div>
+)
 }
 
 export default Header
