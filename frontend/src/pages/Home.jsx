@@ -68,7 +68,7 @@ function Home() {
             </div>
             <div>
               <div className="grid place-content-center bg-white">
-                {/* <img src="/images/home-product-2.jpg" className="w-[80%] ml-20 h-[250px] md:h-[500px] object-cover" /> */}
+                <img src="/images/home-product-2.jpg" className="w-[80%] ml-20 h-[250px] md:h-[500px] object-cover" />
               </div>
               <div className="mt-4">
                 <p className="text-xl md:text-2xl">FLOWRAP MACHINE</p>

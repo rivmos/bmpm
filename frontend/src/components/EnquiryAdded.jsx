@@ -32,7 +32,7 @@ function EnquirySuccess({ isOpen, setIsOpen, message }) {
               >
                 <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className='flex items-center flex-col gap-4'>
-                    <i class="fa-solid fa-circle-check text-4xl text-lightBrown shadow-sm rounded-full"></i>
+                    <i className="fa-solid fa-circle-check text-4xl text-lightBrown shadow-sm rounded-full"></i>
                     <p>{message}</p>
                   </div>
 

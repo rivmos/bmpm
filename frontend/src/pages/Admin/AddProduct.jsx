@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import productServices from '../../services/productServices'
 import EnquirySuccess from '../../components/EnquiryAdded'
+import { useParams } from 'react-router-dom'
 
 const AddProduct = () => {
+    const {id} = useParams()
     const [form, setForm] = useState({
         productName: '',
         mainCategory: '',
@@ -61,6 +63,13 @@ const AddProduct = () => {
         })
     }
 
+    useEffect(() => {
+        if(id){
+            productServices.getProduct(id).then(data =>{
+                setForm(data)
+            })
+        }
+    }, [])
     
 
     useEffect(() => {
@@ -298,7 +307,7 @@ const AddProduct = () => {
                                 return (
                                     <div key={feature} className='flex gap-2'>
                                         <li>{feature}</li>
-                                        <span onClick={() => handleRemoveFeature(index)}><i class="fa-solid fa-trash text-sm cursor-pointer text-gray-400"></i></span>
+                                        <span onClick={() => handleRemoveFeature(index)}><i className="fa-solid fa-trash text-sm cursor-pointer text-gray-400"></i></span>
                                     </div>
                                 )
                             })

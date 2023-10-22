@@ -43,17 +43,17 @@ const ProductInfo = ({ productInfo }) => {
             <div className='flex flex-col gap-4'>
               <div>
                 <div className='text-lightBrown border-[2px] border-lightBrown p-2 cursor-pointer flex justify-center w-full items-center gap-1 text-sm md:text-base' onClick={() => { setFormOpen(true) }}>
-                  <i class="fa-solid fa-pen-to-square text-lightBrown"></i>
+                  <i className="fa-solid fa-pen-to-square text-lightBrown"></i>
                   <span>Enquire Now</span>
                 </div>
               </div>
               <div className='flex flex-col md:flex-row gap-4 justify-center'>
                 <a href={productInfo?.brochureLink} target='_blank' className='text-lightBrown border-[2px] border-lightBrown p-2 cursor-pointer flex justify-center w-full items-center gap-1 text-sm md:text-base'>
-                  <i class="fa-solid fa-file-pdf text-lightBrown"></i>
+                  <i className="fa-solid fa-file-pdf text-lightBrown"></i>
                   <span>Brochure</span>
                 </a>
                 <a href={productInfo?.videoLink} target='_blank' className='text-lightBrown border-[2px] border-lightBrown p-2 cursor-pointer flex justify-center w-full items-center gap-1 text-sm md:text-base'>
-                  <i class="fa-brands fa-youtube text-lightBrown"></i>
+                  <i className="fa-brands fa-youtube text-lightBrown"></i>
                   <span>Video</span>
                 </a>
               </div>

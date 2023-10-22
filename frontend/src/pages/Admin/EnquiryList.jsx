@@ -30,7 +30,7 @@ const EnquiryLists = () => {
   return (
     <div className='max-w-8xl mx-auto py-8'>
       <h2 className="text-lg font-semibold leading-7 text-primaryBrown mb-4">Enquiries</h2>
-      <ul role="list" className="divide-y divide-gray-100 grid grid-cols-4 gap-2">
+      <ul role="list" className="divide-y divide-gray-100 grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-2">
         {enquiries?.map((enquiry) => (
           <li key={enquiry.id} className="flex justify-between gap-x-6 p-5 rounded-lg bg-gray-100">
             <div className="flex min-w-0 gap-x-4">
@@ -42,7 +42,7 @@ const EnquiryLists = () => {
             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
               <p className="text-sm leading-6 text-gray-900">{enquiry.product}</p>
               <p className="text-sm leading-6 text-gray-900">{enquiry.message}</p>
-              <span onClick={() => handleDelete(enquiry.id)}><i class="fa-solid fa-trash text-sm cursor-pointer text-gray-400"></i></span>
+              <span onClick={() => handleDelete(enquiry.id)}><i className="fa-solid fa-trash text-sm cursor-pointer text-gray-400"></i></span>
             </div>
           </li>
         ))}

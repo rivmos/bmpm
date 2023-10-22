@@ -18,6 +18,9 @@ import { useLocation } from "react-router-dom"
 import { useEffect } from "react";
 import AdminConsole from "./pages/Admin/AdminConsole";
 import { useAuth } from "./context/authContext";
+import AddProduct from "./pages/Admin/AddProduct";
+import SubscribersList from "./pages/Admin/SubscribersList";
+import EnquiryLists from "./pages/Admin/EnquiryList";
 
 function App() {
   const { pathname } = useLocation();
@@ -39,18 +42,23 @@ function App() {
               {/* Public Routes */}
               <Route path="/" element={<Home />}/>
               <Route path="/aboutus" element={<About />}/>
-              <Route path="/ourproducts/:id" element={<ProductPage />}/>
+              <Route path="/products/:id" element={<ProductPage />}/>
               <Route path="/testimonials" element={<Testimonials />}/>
               <Route path="/clients" element={<Clients />}/>
               <Route path="/contactus" element={<Contact />}/>
               <Route path="/privacy" element={<Privacy />}/>
               <Route path="/disclaimer" element={<Disclaimer />}/>
-              <Route path="/login" element={<Login />}/>
+              <Route path="/products" element={<Products />}/>
+              <Route path="/hunter/login" element={<Login />}/>
               <Route path="*" element={<Error />}/>
 
               {/* Private Routes */}
               <Route path="/admin" element={<Protected isLoggedIn={user}/>}>
                 <Route path="/admin/console" element={<AdminConsole />} />
+                <Route path="/admin/console/addproduct" element={<AddProduct />} />
+                <Route path="/admin/console/addproduct/:id" element={<AddProduct />} />
+                <Route path="/admin/console/subscribers" element={<SubscribersList />} />
+                <Route path="/admin/console/enquiries" element={<EnquiryLists />} />
                 {/* <Route path="/admin/enquiries" element={<EnquiryList />} />
                 <Route path="/admin/subscribers" element={<SubscribersList />} /> */}
               </Route>

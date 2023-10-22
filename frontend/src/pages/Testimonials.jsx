@@ -31,7 +31,7 @@ const Testimonials = () => {
                     {
                         testimonialsData.map((testimonial, index) => {
                             return(
-                                <TestimonialCard clientComment={testimonial.clientComment} clientMessage={testimonial.clientMessage} clientName={testimonial.clientName} clientCompanyName={testimonial.clientCompanyName} isGrey={index%2 !== 0 ? true : false}/>
+                                <TestimonialCard key={testimonial.id} clientComment={testimonial.clientComment} clientMessage={testimonial.clientMessage} clientName={testimonial.clientName} clientCompanyName={testimonial.clientCompanyName} isGrey={index%2 !== 0 ? true : false}/>
                             )
                         })
                     }

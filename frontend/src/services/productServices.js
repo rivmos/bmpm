@@ -6,6 +6,10 @@ const getDropDownData = async () => {
     const request = await axios.get(`${baseUrl}/dropdowndata`)
     return request.data
 }
+const getAllProducts = async () => {
+    const request = axios.get(`${baseUrl}/products/`)
+    return request.then(response => response.data)
+}
 
 const getProduct = async (id) => {
     const request = axios.get(`${baseUrl}/products/${id}`)
@@ -27,4 +31,4 @@ const getSubCategories = async () => {
     return request.then(response => response.data)
 }
 
-export default {getDropDownData, getProduct, addNewProduct, getMainCategories, getSubCategories}
+export default {getDropDownData, getProduct, addNewProduct, getMainCategories, getSubCategories, getAllProducts}

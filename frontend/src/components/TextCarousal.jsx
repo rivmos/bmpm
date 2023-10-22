@@ -68,10 +68,10 @@ export const TextCarousal = () => {
 
     return (
         <div className="relative overflow-hidden bg-cara">
-            <div className="text-center my-12 md:my-16 text-darkGrey text-2xl md:text-4xl">Clients Are Important To Us</div>
+            {/* <div className="text-center my-12 md:my-16 text-darkGrey text-2xl md:text-4xl">Clients Are Important To Us</div> */}
             <AnimatePresence initial={false} custom={direction}>
                 <motion.div
-                    className="overflow-hidden w-full h-[250px] sm:h-[400px] md:h-[600px]"
+                    className="overflow-hidden w-full h-[450px] md:h-[600px]"
                     key={page}
                     custom={direction}
                     variants={variants}
@@ -95,19 +95,19 @@ export const TextCarousal = () => {
                         }
                     }}
                 >
-                    <div className="absolute md:px-8 py-20 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-white border-2 text-white">
+                    <div className="absolute md:px-8 py-8 md:py-20 w-[250px] sm:w-[400px] md:w-[600px] top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-white border-2 text-white">
                         <TestimonialSlide imageIndex={imageIndex}/>
                     </div>
                 </motion.div>
             </AnimatePresence>
-            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full p-2 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
-                <i class="fa-solid fa-angle-right"></i>
+            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full p-2 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
+                <i className="fa-solid fa-angle-right"></i>
             </div>
-            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full p-2 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
-                <i class="fa-solid fa-angle-left"></i>
+            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full p-2 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
+                <i className="fa-solid fa-angle-left"></i>
             </div>
             <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-sm md:text-2xl flex gap-2 ">
-                {testimonialsData.map((item, index) => <i key={item.clientName} class="fa-solid fa-circle cursor-pointer" style={imageIndex === index ? {color:"#fff"} : {color:'#00000050'}} onClick={() => setPage([index, index < page ? -1 : 1])}></i>)}
+                {testimonialsData.map((item, index) => <i key={item.clientName} className="fa-solid fa-circle cursor-pointer" style={imageIndex === index ? {color:"#fff"} : {color:'#00000050'}} onClick={() => setPage([index, index < page ? -1 : 1])}></i>)}
             </div>
         </div >
     );

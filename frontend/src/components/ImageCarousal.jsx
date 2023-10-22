@@ -94,14 +94,14 @@ export const ImageCarousal = () => {
                     </div>
                 </div>
             </AnimatePresence>
-            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full px-2 md:px-6 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
-                <i class="fa-solid fa-angle-right"></i>
+            <div className="absolute top-[50%] translate-y-[-50%] right-0 rounded-full px-2 md:px-6 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
+                <i className="fa-solid fa-angle-right"></i>
             </div>
-            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full px-2 md:px-6 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(1)}>
-                <i class="fa-solid fa-angle-left"></i>
+            <div className="absolute top-[50%] translate-y-[-50%] left-0 rounded-full px-2 md:px-6 text-white text-xl md:text-6xl flex justify-center items-center cursor-pointer" onClick={() => paginate(-1)}>
+                <i className="fa-solid fa-angle-left"></i>
             </div>
             <div className="absolute bottom-5 left-[50%] translate-x-[-50%] text-white text-sm md:text-2xl flex gap-2">
-                {images.map((item, index)=><i key={item.src} class="fa-regular fa-circle cursor-pointer" style={{color:imageIndex === index ? "#b39573" : '#fff'}} onClick={()=> setPage([index, index < page ? -1 : 1])}></i>)}
+                {images.map((item, index)=><i key={item.src} className="fa-regular fa-circle cursor-pointer" style={{color:imageIndex === index ? "#b39573" : '#fff'}} onClick={()=> setPage([index, index < page ? -1 : 1])}></i>)}
             </div>
         </div >
     );

@@ -6,7 +6,7 @@ const Protected = ({isLoggedIn}) => {
     return(
         <div>
             {
-                !isLoggedIn ? <Navigate to='/login' replace /> : <Outlet />
+                !isLoggedIn ? <Navigate to='/notfound' replace /> : <Outlet />
             }
         </div>
     )

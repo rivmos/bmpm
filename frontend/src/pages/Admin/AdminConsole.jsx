@@ -1,51 +1,43 @@
 import React, { useState } from 'react'
-import SubscribersList from './SubscribersList'
-import EnquiryLists from './EnquiryList'
-import AddProduct from './AddProduct'
-
-const ViewDisplay = ({viewName}) => {
-    if(viewName === 'Subscriber'){
-        return(
-            <>
-                <SubscribersList />
-            </>
-        )
-    }
-    if(viewName === 'Product'){
-        return(
-            <>
-                <AddProduct />
-            </>
-        )
-    }
-
-    if(viewName === 'Enquiry'){
-        return(
-            <>
-                <EnquiryLists />
-            </>
-        )
-    }
-}
+import { Link } from 'react-router-dom'
 
 const AdminConsole = () => {
-    const [viewName, setViewName] = useState('Product')
 
-    return(
+    return (
         <>
-        <div className='max-w-8xl mx-auto'>
-            <div className='flex gap-4 py-4'>
-                <button className='bg-gray-200 p-2 rounded-md' style={{backgroundColor:viewName === 'Product' ? 'Gray' : 'White',color:viewName === 'Product' ? 'White' : 'Black'}} onClick={() => setViewName('Product')}>Add Product</button>
-                <button className='bg-gray-200 p-2 rounded-md' style={{backgroundColor:viewName === 'Enquiry' ? 'Gray' : 'White',color:viewName === 'Enquiry' ? 'White' : 'Black'}} onClick={() => setViewName('Enquiry')}>Enquiries</button>
-                <button className='bg-gray-200 p-2 rounded-md' style={{backgroundColor:viewName === 'Subscriber' ? 'Gray' : 'White',color:viewName === 'Subscriber' ? 'White' : 'Black'}} onClick={() => setViewName('Subscriber')}>Subscribers</button>
+            <div className='mx-auto'>
+                <div className="bg-gradient-to-r from-lightBrown to-primaryBrown h-screen">
+                    <div className="flex flex-col h-full justify-center items-center text-white">
+                        <div className="text-center">
+                            <h1 className="text-4xl font-semibold mb-4">Welcome, Admin!</h1>
+                            <p className="text-lg mb-8">Manage your dashboard with ease.</p>
+                        </div>
+                        <div className="flex space-x-4">
+                            <Link
+                                to="/admin/console/addproduct"
+                                className="bg-white text-primaryBrown px-6 py-3 rounded-full hover:bg-lightBrown hover:text-white transition duration-300 ease-in-out"
+                            >
+                                Add Product
+                            </Link>
+                            <Link
+                                to="/admin/console/enquiries"
+                                className="bg-white text-primaryBrown px-6 py-3 rounded-full hover:bg-lightBrown hover:text-white transition duration-300 ease-in-out"
+                            >
+                                Enquiries
+                            </Link>
+                            <Link
+                                to="/admin/console/subscribers"
+                                className="bg-white text-primaryBrown px-6 py-3 rounded-full hover:bg-lightBrown hover:text-white transition duration-300 ease-in-out"
+                            >
+                                Subscribers
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <ViewDisplay viewName={viewName}/>
-            </div>
-        </div>
         </>
     )
-    
+
 }
 
 export default AdminConsole
